@@ -16,7 +16,7 @@ const RecipeSubmitBanner = () => {
         </div>
         <div className="col-md-3">
           <div className="recipe-button">
-            <a className="submit-recipe" href="#">
+            <a className="submit-recipe" href="/">
               submit recipe
             </a>
           </div>

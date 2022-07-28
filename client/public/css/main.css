@@ -630,7 +630,8 @@ span.sign-in-buttons .login {
 .nav-collapse ul li:hover > a {
   color: #6ebe3b;
 }
-.nav-collapse ul li ul {
+/* padashti menuta */
+.nav-collapse ul li ul {  
   top: 100%;
   display: none;
   opacity: 1;

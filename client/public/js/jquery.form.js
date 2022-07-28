@@ -7,9 +7,12 @@
  * Project repository: https://github.com/malsup/form
  * Dual licensed under the MIT and GPL licenses.
  * https://github.com/malsup/form#copyright-and-license
+ * 
  */
 /*global ActiveXObject */
-;(function($) {
+
+;
+(function($) {
 "use strict";
 
 /*

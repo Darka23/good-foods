@@ -15,19 +15,19 @@ const Post = () => {
               <span>
                 <img src="images/burger-icon.png" alt="icon" />
               </span>
-              <a href="#">Nam ornare arcu turpis, nec congue nibh tempores</a>
+              <a href="/">Nam ornare arcu turpis, nec congue nibh tempores</a>
             </li>
             <li>
               <span>
                 <img src="images/grapes-icon.png" alt="icon" />
               </span>
-              <a href="#">Quis euismod mauris. Nulla porttitor orcirisk</a>
+              <a href="/">Quis euismod mauris. Nulla porttitor orcirisk</a>
             </li>
             <li>
               <span>
                 <img src="images/salt-pot-icon.png" alt="icon" />
               </span>
-              <a href="#">We are hugeseget semper vulputate. </a>
+              <a href="/">We are hugeseget semper vulputate. </a>
             </li>
           </ul>
           <a
@@ -36,7 +36,7 @@ const Post = () => {
           >
             Watch our Video
           </a>
-          <a className="button-default hollow-button" href="#">
+          <a className="button-default hollow-button" href="/">
             Know more About Us
           </a>
         </div>

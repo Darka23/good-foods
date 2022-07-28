@@ -28,7 +28,7 @@ const Header = () => {
 									<div className="wrapper-main-nav ">
 										<nav className="nav-collapse responsive-menu">
 											<ul className="main-menu">
-												<li >
+												<li>
 													<Link to="/">Home</Link>
 													<ul>
 														<li>
@@ -67,10 +67,10 @@ const Header = () => {
 													</ul>
 												</li>
 												<li>
-													<Link to="recipe-listing.html">Recipe Detail</Link>
+													<Link to="/recipe-detail.html">Recipe Detail</Link>
 													<ul>
 														<li>
-															<Link to="recipe-detail.html">recipe detail version 1</Link>
+															<Link to="/recipe-detail.html">recipe detail version 1</Link>
 														</li>
 														<li>
 															<Link to="recipe-detail2.html">
@@ -83,7 +83,7 @@ const Header = () => {
 													<Link to="our-chefs.html">Chefs</Link>
 												</li>
 												<li>
-													<Link to="blog.html">Blog</Link>
+													<Link to="/blog.html">Blog</Link>
 													<ul>
 														<li>
 															<Link to="single.html">Single post</Link>
@@ -94,7 +94,7 @@ const Header = () => {
 													<Link to="elements.html">elements</Link>
 												</li>
 												<li>
-													<Link to="contact.html">contact</Link>
+													<Link to="/contacts.html">contacts</Link>
 												</li>
 												<li>
 													<Link className="submit-recipe" to="/submit-recipe.html">
@@ -111,11 +111,6 @@ const Header = () => {
 				</div>
 			</header>
      );
-}
-
-function onHover(e){
-	console.log(document.querySelector("#lim :nth-child(2)"));
-	console.log(1)
 }
  
 export default Header;

@@ -53,10 +53,10 @@ const Header2 = () => {
                       </ul>
                     </li>
                     <li>
-                      <Link to="#">Recipe Detail</Link>
+                      <Link to="/recipe-detail.html">Recipe Detail</Link>
                       <ul>
                         <li>
-                          <Link to="recipe-detail.html">
+                          <Link to="/recipe-detail.html">
                             recipe detail version 1
                           </Link>
                         </li>
@@ -113,7 +113,7 @@ const Header2 = () => {
                 <nav className="nav-collapse">
                   <ul className="main-menu right">
                     <li>
-                      <Link to="blog.html">blog</Link>
+                      <Link to="/blog.html">blog</Link>
                       <ul>
                         <li>
                           <Link to="single.html">Single post</Link>
@@ -124,7 +124,7 @@ const Header2 = () => {
                       <Link to="elements.html">elements</Link>
                     </li>
                     <li>
-                      <Link to="contact.html">contact</Link>
+                      <Link to="/contacts.html">contacts</Link>
                     </li>
                     <li>
                       <Link className="submit-recipe" to="/submit-recipe.html">

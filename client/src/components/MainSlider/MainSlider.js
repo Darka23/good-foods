@@ -10,10 +10,10 @@ const MainSlider = () => {
                             <div className="slider-left">
                                 <div className="custom-margin" id="sync1">
                                     <div>
-                                        <a href="#"><img src="./images/temp-images/slide1.jpg" alt="slide" /></a>
+                                        <a href="/"><img src="./images/temp-images/slide1.jpg" alt="slide" /></a>
                                     </div>
                                     <div>
-                                        <a href="#"><img src="./images/temp-images/slide2.jpg" alt="slide" /></a>
+                                        <a href="/"><img src="./images/temp-images/slide2.jpg" alt="slide" /></a>
                                     </div>
                                 </div>
                                 <span className="custom-arrows">
@@ -28,11 +28,11 @@ const MainSlider = () => {
                                     <div>
                                         <div className="slide-detail fbox">
                                             <div className="box1 box">
-                                                <h2><a href="#">Pasto Pizza with Extra Cheese &amp; Toppings</a></h2>
-                                                <a className="food-category" href="#">asian food</a>
+                                                <h2><a href="/">Pasto Pizza with Extra Cheese &amp; Toppings</a></h2>
+                                                <a className="food-category" href="/">asian food</a>
                                                 <ul className="post-meta slider-rating">
-                                                    <li className="author"><a href="#">Johan Doe</a></li>
-                                                    <li className="type"><a href="#">Easy</a></li>
+                                                    <li className="author"><a href="/">Johan Doe</a></li>
+                                                    <li className="type"><a href="/">Easy</a></li>
                                                     <li className="time">2 Hours</li>
                                                 </ul>
                                                 <p>
@@ -103,11 +103,11 @@ const MainSlider = () => {
                                     <div>
                                         <div className="slide-detail fbox">
                                             <div className="box1 box">
-                                                <h2><a href="#">Supreame Pizza with Extra Toppings</a></h2>
-                                                <a className="food-category" href="#">asian food</a>
+                                                <h2><a href="/">Supreame Pizza with Extra Toppings</a></h2>
+                                                <a className="food-category" href="/">asian food</a>
                                                 <ul className="post-meta slider-rating">
-                                                    <li className="author"><a href="#">Johan Doe</a></li>
-                                                    <li className="type"><a href="#">Easy</a></li>
+                                                    <li className="author"><a href="/">Johan Doe</a></li>
+                                                    <li className="type"><a href="/">Easy</a></li>
                                                     <li className="time">2 Hours</li>
                                                 </ul>
                                                 <p>

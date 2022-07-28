@@ -32,7 +32,7 @@ const SearchBar = () => {
                             <div className="wrapper-search-carousel">
                                 <div className="search-carousel" id="search-carousel">
                                     <div className="slide">
-                                        <a href="#">
+                                        <a href="/">
                                             <span>
                                                 <svg
                                                     version="1.1"
@@ -67,7 +67,7 @@ const SearchBar = () => {
                                         </a>
                                     </div>
                                     <div className="slide">
-                                        <a href="#">
+                                        <a href="/">
                                             <span>
                                                 <svg
                                                     version="1.1"
@@ -105,7 +105,7 @@ const SearchBar = () => {
                                         </a>
                                     </div>
                                     <div className="slide">
-                                        <a href="#">
+                                        <a href="/">
                                             <span>
                                                 <svg
                                                     version="1.1"
@@ -152,7 +152,7 @@ const SearchBar = () => {
                                         </a>
                                     </div>
                                     <div className="slide">
-                                        <a href="#">
+                                        <a href="/">
                                             <span>
                                                 <svg
                                                     version="1.1"
@@ -195,7 +195,7 @@ const SearchBar = () => {
                                         </a>
                                     </div>
                                     <div className="slide">
-                                        <a href="#">
+                                        <a href="/">
                                             <span>
                                                 <svg
                                                     version="1.1"

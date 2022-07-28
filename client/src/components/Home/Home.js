@@ -9,6 +9,7 @@ const Home = () => {
     return (
         <>
             <HomeHeader/>
+            {/* <MainSlider/> */}
             <SearchBar />
             <HotRecipes />
             <Post />

@@ -133,13 +133,13 @@ const RecipeList = () => {
             <div className="recipe-listing listing-list">
               <div className="listing">
                 <div className="image">
-                  <a href="#">
+                  <a href="/">
                     <img src="images/temp-images/listing-1.jpg" alt="image" />
                   </a>
                 </div>
                 <div className="detail">
                   <h4>
-                    <a href="#">pasto pizza with fillas cheez toppings</a>
+                    <a href="/">pasto pizza with fillas cheez toppings</a>
                   </h4>
                   <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -149,7 +149,7 @@ const RecipeList = () => {
                   <div className="meta-listing">
                     <ul className="post-meta">
                       <li className="author">
-                        <a href="#">John Doe</a>
+                        <a href="/">John Doe</a>
                       </li>
                       <li className="calendar">23/10/2015</li>
                     </ul>
@@ -306,13 +306,13 @@ const RecipeList = () => {
               </div>
               <div className="listing">
                 <div className="image">
-                  <a href="#">
+                  <a href="/">
                     <img src="images/temp-images/listing-2.jpg" alt="image" />
                   </a>
                 </div>
                 <div className="detail">
                   <h4>
-                    <a href="#">pasto pizza with fillas cheez toppings</a>
+                    <a href="/">pasto pizza with fillas cheez toppings</a>
                   </h4>
                   <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -322,7 +322,7 @@ const RecipeList = () => {
                   <div className="meta-listing">
                     <ul className="post-meta">
                       <li className="author">
-                        <a href="#">John Doe</a>
+                        <a href="/">John Doe</a>
                       </li>
                       <li className="calendar">23/10/2015</li>
                     </ul>
@@ -479,13 +479,13 @@ const RecipeList = () => {
               </div>
               <div className="listing">
                 <div className="image">
-                  <a href="#">
+                  <a href="/">
                     <img src="images/temp-images/listing-3.jpg" alt="image" />
                   </a>
                 </div>
                 <div className="detail">
                   <h4>
-                    <a href="#">pasto pizza with fillas cheez toppings</a>
+                    <a href="/">pasto pizza with fillas cheez toppings</a>
                   </h4>
                   <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -495,7 +495,7 @@ const RecipeList = () => {
                   <div className="meta-listing">
                     <ul className="post-meta">
                       <li className="author">
-                        <a href="#">John Doe</a>
+                        <a href="/">John Doe</a>
                       </li>
                       <li className="calendar">23/10/2015</li>
                     </ul>
@@ -652,13 +652,13 @@ const RecipeList = () => {
               </div>
               <div className="listing">
                 <div className="image">
-                  <a href="#">
+                  <a href="/">
                     <img src="images/temp-images/listing-4.jpg" alt="image" />
                   </a>
                 </div>
                 <div className="detail">
                   <h4>
-                    <a href="#">pasto pizza with fillas cheez toppings</a>
+                    <a href="/">pasto pizza with fillas cheez toppings</a>
                   </h4>
                   <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -668,7 +668,7 @@ const RecipeList = () => {
                   <div className="meta-listing">
                     <ul className="post-meta">
                       <li className="author">
-                        <a href="#">John Doe</a>
+                        <a href="/">John Doe</a>
                       </li>
                       <li className="calendar">23/10/2015</li>
                     </ul>
@@ -825,13 +825,13 @@ const RecipeList = () => {
               </div>
               <div className="listing">
                 <div className="image">
-                  <a href="#">
+                  <a href="/">
                     <img src="images/temp-images/listing-1.jpg" alt="image" />
                   </a>
                 </div>
                 <div className="detail">
                   <h4>
-                    <a href="#">pasto pizza with fillas cheez toppings</a>
+                    <a href="/">pasto pizza with fillas cheez toppings</a>
                   </h4>
                   <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -841,7 +841,7 @@ const RecipeList = () => {
                   <div className="meta-listing">
                     <ul className="post-meta">
                       <li className="author">
-                        <a href="#">John Doe</a>
+                        <a href="/">John Doe</a>
                       </li>
                       <li className="calendar">23/10/2015</li>
                     </ul>
@@ -998,13 +998,13 @@ const RecipeList = () => {
               </div>
               <div className="listing">
                 <div className="image">
-                  <a href="#">
+                  <a href="/">
                     <img src="images/temp-images/listing-2.jpg" alt="image" />
                   </a>
                 </div>
                 <div className="detail">
                   <h4>
-                    <a href="#">pasto pizza with fillas cheez toppings</a>
+                    <a href="/">pasto pizza with fillas cheez toppings</a>
                   </h4>
                   <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -1014,7 +1014,7 @@ const RecipeList = () => {
                   <div className="meta-listing">
                     <ul className="post-meta">
                       <li className="author">
-                        <a href="#">John Doe</a>
+                        <a href="/">John Doe</a>
                       </li>
                       <li className="calendar">23/10/2015</li>
                     </ul>
@@ -1180,14 +1180,14 @@ const RecipeList = () => {
                     <div className="recipe-content-inner">
                       <span className="tag">Recipe of the Day</span>
                       <h2>
-                        <a href="#">Pasto Pizza With Fillas Cheese Topping</a>
+                        <a href="/">Pasto Pizza With Fillas Cheese Topping</a>
                       </h2>
                       <div className="short-separator" />
                       <p>
                         Nam ornare arcu turpis, nec congu Curabitur quis
                         euismod...
                       </p>
-                      <a className="read-more" href="#">
+                      <a className="read-more" href="/">
                         read more
                       </a>
                     </div>
@@ -1196,7 +1196,7 @@ const RecipeList = () => {
               </div>
               {/*recipe of the day ends*/}
               <div className="banner-header text-center">
-                <a href="#">
+                <a href="/">
                   <img
                     src="images/temp-images/header-banner.jpg"
                     alt="banner"
@@ -1205,13 +1205,13 @@ const RecipeList = () => {
               </div>
               <div className="listing">
                 <div className="image">
-                  <a href="#">
+                  <a href="/">
                     <img src="images/temp-images/listing-1.jpg" alt="image" />
                   </a>
                 </div>
                 <div className="detail">
                   <h4>
-                    <a href="#">pasto pizza with fillas cheez toppings</a>
+                    <a href="/">pasto pizza with fillas cheez toppings</a>
                   </h4>
                   <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -1221,7 +1221,7 @@ const RecipeList = () => {
                   <div className="meta-listing">
                     <ul className="post-meta">
                       <li className="author">
-                        <a href="#">John Doe</a>
+                        <a href="/">John Doe</a>
                       </li>
                       <li className="calendar">23/10/2015</li>
                     </ul>
@@ -1378,13 +1378,13 @@ const RecipeList = () => {
               </div>
               <div className="listing">
                 <div className="image">
-                  <a href="#">
+                  <a href="/">
                     <img src="images/temp-images/listing-2.jpg" alt="image" />
                   </a>
                 </div>
                 <div className="detail">
                   <h4>
-                    <a href="#">pasto pizza with fillas cheez toppings</a>
+                    <a href="/">pasto pizza with fillas cheez toppings</a>
                   </h4>
                   <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -1394,7 +1394,7 @@ const RecipeList = () => {
                   <div className="meta-listing">
                     <ul className="post-meta">
                       <li className="author">
-                        <a href="#">John Doe</a>
+                        <a href="/">John Doe</a>
                       </li>
                       <li className="calendar">23/10/2015</li>
                     </ul>
@@ -1551,13 +1551,13 @@ const RecipeList = () => {
               </div>
               <div className="listing">
                 <div className="image">
-                  <a href="#">
+                  <a href="/">
                     <img src="images/temp-images/listing-3.jpg" alt="image" />
                   </a>
                 </div>
                 <div className="detail">
                   <h4>
-                    <a href="#">pasto pizza with fillas cheez toppings</a>
+                    <a href="/">pasto pizza with fillas cheez toppings</a>
                   </h4>
                   <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -1567,7 +1567,7 @@ const RecipeList = () => {
                   <div className="meta-listing">
                     <ul className="post-meta">
                       <li className="author">
-                        <a href="#">John Doe</a>
+                        <a href="/">John Doe</a>
                       </li>
                       <li className="calendar">23/10/2015</li>
                     </ul>
@@ -1724,13 +1724,13 @@ const RecipeList = () => {
               </div>
               <ul className="page-nav">
                 <li className="current">
-                  <a href="#">1</a>
+                  <a href="/">1</a>
                 </li>
                 <li>
-                  <a href="#">2</a>
+                  <a href="/">2</a>
                 </li>
                 <li>
-                  <a href="#">3</a>
+                  <a href="/">3</a>
                 </li>
               </ul>
             </div>
@@ -1744,7 +1744,7 @@ const RecipeList = () => {
                 <div className="category-list">
                   <ul>
                     <li>
-                      <a href="#">breakfast</a>
+                      <a href="/">breakfast</a>
                       <div className="list-icons">
                         <svg
                           version="1.1"
@@ -1777,7 +1777,7 @@ const RecipeList = () => {
                       </div>
                     </li>
                     <li>
-                      <a href="#">Starter</a>
+                      <a href="/">Starter</a>
                       <div className="list-icons">
                         <svg
                           version="1.1"
@@ -1813,7 +1813,7 @@ const RecipeList = () => {
                       </div>
                     </li>
                     <li>
-                      <a href="#">lunch</a>
+                      <a href="/">lunch</a>
                       <div className="list-icons">
                         <svg
                           version="1.1"
@@ -1858,7 +1858,7 @@ const RecipeList = () => {
                       </div>
                     </li>
                     <li>
-                      <a href="#">dinner</a>
+                      <a href="/">dinner</a>
                       <div className="list-icons">
                         <svg
                           version="1.1"
@@ -1896,7 +1896,7 @@ const RecipeList = () => {
                       </div>
                     </li>
                     <li>
-                      <a href="#">dessert</a>
+                      <a href="/">dessert</a>
                       <div className="list-icons">
                         <svg
                           version="1.1"
@@ -1946,7 +1946,7 @@ const RecipeList = () => {
                 <ul>
                   <li>
                     <div className="thumb">
-                      <a href="#">
+                      <a href="/">
                         <img
                           src="images/temp-images/widget-thumbnail.jpg"
                           alt="thumbnail"
@@ -1954,13 +1954,13 @@ const RecipeList = () => {
                       </a>
                     </div>
                     <div className="detail">
-                      <a href="#">Pimento Cheese Potato Skins</a>
+                      <a href="/">Pimento Cheese Potato Skins</a>
                       <span className="post-date">March 21,2015</span>
                     </div>
                   </li>
                   <li>
                     <div className="thumb">
-                      <a href="#">
+                      <a href="/">
                         <img
                           src="images/temp-images/widget-thumbnail.jpg"
                           alt="thumbnail"
@@ -1968,13 +1968,13 @@ const RecipeList = () => {
                       </a>
                     </div>
                     <div className="detail">
-                      <a href="#">Pimento Cheese Potato Skins</a>
+                      <a href="/">Pimento Cheese Potato Skins</a>
                       <span className="post-date">March 21,2015</span>
                     </div>
                   </li>
                   <li>
                     <div className="thumb">
-                      <a href="#">
+                      <a href="/">
                         <img
                           src="images/temp-images/widget-thumbnail.jpg"
                           alt="thumbnail"
@@ -1982,13 +1982,13 @@ const RecipeList = () => {
                       </a>
                     </div>
                     <div className="detail">
-                      <a href="#">Pimento Cheese Potato Skins</a>
+                      <a href="/">Pimento Cheese Potato Skins</a>
                       <span className="post-date">March 21,2015</span>
                     </div>
                   </li>
                   <li>
                     <div className="thumb">
-                      <a href="#">
+                      <a href="/">
                         <img
                           src="images/temp-images/widget-thumbnail.jpg"
                           alt="thumbnail"
@@ -1996,7 +1996,7 @@ const RecipeList = () => {
                       </a>
                     </div>
                     <div className="detail">
-                      <a href="#">Pimento Cheese Potato Skins</a>
+                      <a href="/">Pimento Cheese Potato Skins</a>
                       <span className="post-date">March 21,2015</span>
                     </div>
                   </li>
@@ -2004,7 +2004,7 @@ const RecipeList = () => {
               </div>
               {/*popular recipes widget ends*/}
               <div className="widget">
-                <a href="#">
+                <a href="/">
                   <img src="images/temp-images/add-side.jpg" alt="Add" />
                 </a>
               </div>

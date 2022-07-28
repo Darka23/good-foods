@@ -44,32 +44,32 @@ const Footer = () => {
                   <h2>Get Social with Us</h2>
                   <ul>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         <i className="fa fa-facebook" />
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         <i className="fa fa-twitter" />
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         <i className="fa fa-linkedin" />
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         <i className="fa fa-google-plus" />
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         <i className="fa fa-youtube-play" />
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         <i className="fa fa-flickr" />
                       </a>
                     </li>
@@ -82,7 +82,7 @@ const Footer = () => {
         <div className="footer-copyright text-center wow animated flipInX">
           <p>
             © Copyright 2015 All Rights Reserved by{" "}
-            <a href="#">Majestic Themes</a>
+            <a href="/">Majestic Themes</a>
           </p>
         </div>
         <div className="corner-image wow animated fadeInRight">

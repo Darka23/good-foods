@@ -10,9 +10,9 @@ const HotRecipes = () => {
         {/*
     * These tags are skipped for WordPress specific AJAX functionality.
     <ul>
-  <li><a href="#">Latest Recipes</a></li>
-  <li><a href="#">Most Rated</a></li>
-  <li><a href="#">Most Liked</a></li>
+  <li><a href="/">Latest Recipes</a></li>
+  <li><a href="/">Most Rated</a></li>
+  <li><a href="/">Most Liked</a></li>
     </ul>
     */}
       </div>
@@ -20,7 +20,7 @@ const HotRecipes = () => {
         <div className="hot-row">
           {/*recipe col starts*/}
           <div className="full-image col-size">
-            <a href="#">
+            <a href="/">
               <figure className="inner-full-image">
                 <img src="images/temp-images/hot-full.jpg" alt="image" />
                 <figcaption>Pasto Pizza with Extra Cheese Toppings</figcaption>
@@ -37,7 +37,7 @@ const HotRecipes = () => {
                   <div className="intro bg-color1">
                     <div className="heading-recipe">
                       <h3>
-                        <a href="#">Pasto Pizza with Ext Cheese Toppings</a>
+                        <a href="/">Pasto Pizza with Ext Cheese Toppings</a>
                       </h3>
                     </div>
                     <div className="rating-box">
@@ -190,7 +190,7 @@ const HotRecipes = () => {
                     </div>
                   </div>
                   <div className="image">
-                    <a href="#">
+                    <a href="/">
                       <img src="images/temp-images/hot-1.jpg" alt="image" />
                     </a>
                   </div>
@@ -203,7 +203,7 @@ const HotRecipes = () => {
                   <div className="intro bg-color2">
                     <div className="heading-recipe">
                       <h3>
-                        <a href="#">Pasto Pizza with Ext Cheese Toppings</a>
+                        <a href="/">Pasto Pizza with Ext Cheese Toppings</a>
                       </h3>
                     </div>
                     <div className="rating-box">
@@ -356,7 +356,7 @@ const HotRecipes = () => {
                     </div>
                   </div>
                   <div className="image">
-                    <a href="#">
+                    <a href="/">
                       <img src="images/temp-images/hot-2.jpg" alt="image" />
                     </a>
                   </div>
@@ -375,7 +375,7 @@ const HotRecipes = () => {
                   <div className="intro bg-color3">
                     <div className="heading-recipe">
                       <h3>
-                        <a href="#">Pasto Pizza with Ext Cheese Toppings</a>
+                        <a href="/">Pasto Pizza with Ext Cheese Toppings</a>
                       </h3>
                     </div>
                     <div className="rating-box">
@@ -528,7 +528,7 @@ const HotRecipes = () => {
                     </div>
                   </div>
                   <div className="image">
-                    <a href="#">
+                    <a href="/">
                       <img src="images/temp-images/hot-3.jpg" alt="image" />
                     </a>
                   </div>
@@ -541,7 +541,7 @@ const HotRecipes = () => {
                   <div className="intro bg-color4">
                     <div className="heading-recipe">
                       <h3>
-                        <a href="#">Pasto Pizza with Ext Cheese Toppings</a>
+                        <a href="/">Pasto Pizza with Ext Cheese Toppings</a>
                       </h3>
                     </div>
                     <div className="rating-box">
@@ -694,7 +694,7 @@ const HotRecipes = () => {
                     </div>
                   </div>
                   <div className="image">
-                    <a href="#">
+                    <a href="/">
                       <img src="images/temp-images/hot-4.jpg" alt="image" />
                     </a>
                   </div>
@@ -713,14 +713,14 @@ const HotRecipes = () => {
                   <div className="intro bg-color5">
                     <div className="heading-recipe">
                       <h3>
-                        <a href="#">Pasto Pizza with Ext Cheese Toppings</a>
+                        <a href="/">Pasto Pizza with Ext Cheese Toppings</a>
                       </h3>
                       <ul className="post-meta recipe">
                         <li className="author">
-                          <a href="#">Johan Doe</a>
+                          <a href="/">Johan Doe</a>
                         </li>
                         <li className="type">
-                          <a href="#">Easy</a>
+                          <a href="/">Easy</a>
                         </li>
                         <li className="time">2 Hours</li>
                       </ul>
@@ -879,7 +879,7 @@ const HotRecipes = () => {
                     </div>
                   </div>
                   <div className="image">
-                    <a href="#">
+                    <a href="/">
                       <img src="images/temp-images/hot-5.jpg" alt="image" />
                     </a>
                   </div>
