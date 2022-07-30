@@ -6,6 +6,7 @@ const SubmitRecipe = () => {
 		<>
 
 			<Header2 />
+
 			<div className="banner banner-blog">
 				<div className="container ">
 					<div className="main-heading">
@@ -13,7 +14,6 @@ const SubmitRecipe = () => {
 					</div>
 				</div>
 			</div>
-			{/*banner ends*/}
 
 			<AdvanceSearchForm/>
 			

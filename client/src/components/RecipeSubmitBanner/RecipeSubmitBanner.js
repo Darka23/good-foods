@@ -18,6 +18,7 @@ const RecipeSubmitBanner = () => {
 						</div>
 					</div>
 				</div>
+<br/>
 			</div>
 		</div>
 	);
