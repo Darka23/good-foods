@@ -80,18 +80,12 @@ const Header = () => {
 													</ul>
 												</li>
 												<li>
-													<Link to="our-chefs.html">Chefs</Link>
-												</li>
-												<li>
 													<Link to="/blog.html">Blog</Link>
 													<ul>
 														<li>
 															<Link to="single.html">Single post</Link>
 														</li>
 													</ul>
-												</li>
-												<li>
-													<Link to="elements.html">elements</Link>
 												</li>
 												<li>
 													<Link to="/contacts.html">contacts</Link>

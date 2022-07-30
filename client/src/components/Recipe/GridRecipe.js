@@ -1,14 +1,16 @@
+import { Link } from "react-router-dom";
+
 const GridRecipe = () => {
     return (
         <div className="listing">
             <div className="image">
-                <a href="/">
+                <Link to="/recipe-detail.html">
                     <img src="images/temp-images/listing-1.jpg" alt="image" />
-                </a>
+                </Link>
             </div>
             <div className="detail">
                 <h4>
-                    <a href="/">pasto pizza with fillas cheez toppings</a>
+                    <Link to="/recipe-detail.html">pasto pizza with fillas cheez toppings</Link>
                 </h4>
                 <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.
@@ -18,7 +20,7 @@ const GridRecipe = () => {
                 <div className="meta-listing">
                     <ul className="post-meta">
                         <li className="author">
-                            <a href="/">John Doe</a>
+                            <Link to="/">John Doe</Link>
                         </li>
                         <li className="calendar">23/10/2015</li>
                     </ul>
