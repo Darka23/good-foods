@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route, Router } from 'react-router-dom'
 
 import './App.css';
 
@@ -14,24 +14,30 @@ import Contacts from './components/Contacts/Contacts';
 import Blog from './components/Blog/Blog';
 import RecipeDetails from './components/RecipeDetails/RecipeDetails';
 import BlogPostDetails from './components/BlogPostDetails/BlogPostDetails';
-import {useEffect} from 'react'
+import { useEffect } from 'react'
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import Reset from './components/Reset/Reset';
 
 function App() {
 	return (
 		<>
 			{/* <Preloader/>	 */}
 			<Routes>
-				<Route path="/" element={<Home/>}/>
-				<Route path="/submit-recipe.html" element={<SubmitRecipe/>}/>
-				<Route path="/recipe-listing.html" element={<RecipeListGrid/>}/>
-				<Route path="/recipe-listing-grid.html" element={<RecipeList/>}/>
-				<Route path="/contacts.html" element={<Contacts/>}/>
-				<Route path="/blog.html" element={<Blog/>}/>
-				<Route path="/recipe-detail.html" element={<RecipeDetails/>}/>
-				<Route path="/blog-post-details.html" element={<BlogPostDetails/>}/>
-			</Routes>	
+				<Route path="/" element={<Home />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/reset" element={<Reset />} />
+				<Route path="/submit-recipe" element={<SubmitRecipe />} />
+				<Route path="/recipe-listing" element={<RecipeListGrid />} />
+				<Route path="/recipe-listing-grid" element={<RecipeList />} />
+				<Route path="/contacts" element={<Contacts />} />
+				<Route path="/blog" element={<Blog />} />
+				<Route path="/recipe-detail" element={<RecipeDetails />} />
+				<Route path="/blog-post-details" element={<BlogPostDetails />} />
+			</Routes>
 
-			<Footer/>		
+			
 		</>
 	);
 }

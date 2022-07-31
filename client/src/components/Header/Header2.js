@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
+import LoginRegister from "../AuthButtons/LoginRegister";
+import LogOut from "../AuthButtons/LogOut"
 
 const Header2 = () => {
+
+	const [user] = useAuthState(auth);
+	
 	return (
 		<>
 			{/*header*/}
@@ -18,7 +25,7 @@ const Header2 = () => {
 													<Link to="/">Home</Link>
 													<ul>
 														<li>
-															<Link to="variation1.html">variation one</Link>
+															<Link to="/variation1.html">variation one</Link>
 														</li>
 														<li>
 															<Link to="variation2.html">variation two</Link>
@@ -38,25 +45,25 @@ const Header2 = () => {
 													</ul>
 												</li>
 												<li>
-													<Link to="/recipe-listing.html">Recent Recipes</Link>
+													<Link to="/recipe-listing">Recent Recipes</Link>
 													<ul>
 														<li>
-															<Link to="/recipe-listing.html">
+															<Link to="/recipe-listing">
 																recipe listing list view
 															</Link>
 														</li>
 														<li>
-															<Link to="/recipe-listing-grid.html">
+															<Link to="/recipe-listing-grid">
 																recipe listing grid view
 															</Link>
 														</li>
 													</ul>
 												</li>
 												<li>
-													<Link to="/recipe-detail.html">Recipe Detail</Link>
+													<Link to="/recipe-detail">Recipe Detail</Link>
 													<ul>
 														<li>
-															<Link to="/recipe-detail.html">
+															<Link to="/recipe-detail">
 																recipe detail version 1
 															</Link>
 														</li>
@@ -81,19 +88,14 @@ const Header2 = () => {
 								<div className="col-md-5">
 									<div className="right-nav">
 										<div className="wrapper-links">
-											<span className="sign-in-buttons">
-												<Link className="login" to="#">
-													Login
-												</Link>
-												<Link className="register" to="#">
-													Register
-												</Link>
-											</span>
+
+											{!user ? <LoginRegister/> : <LogOut/>}	
+											
 										</div>
 										<nav className="nav-collapse">
 											<ul className="main-menu right">
 												<li>
-													<Link to="/blog.html">blog</Link>
+													<Link to="/blog">blog</Link>
 													<ul>
 														<li>
 															<Link to="single.html">Single post</Link>
@@ -101,10 +103,10 @@ const Header2 = () => {
 													</ul>
 												</li>
 												<li>
-													<Link to="/contacts.html">contacts</Link>
+													<Link to="/contacts">contacts</Link>
 												</li>
 												<li>
-													<Link className="submit-recipe" to="/submit-recipe.html">
+													<Link className="submit-recipe" to="/submit-recipe">
 														Submit recipe
 													</Link>
 												</li>
