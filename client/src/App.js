@@ -1,4 +1,5 @@
-import { Routes, Route, Router } from 'react-router-dom'
+import { Routes, Route, Router, Redirect, Navigate } from 'react-router-dom'
+import { useState } from 'react';
 
 import './App.css';
 
@@ -18,11 +19,16 @@ import { useEffect } from 'react'
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Reset from './components/Reset/Reset';
+import Profile from './components/Profile/Profile';
+import { auth, useAuth } from './firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import SubmitToBlog from './components/SubmitToBlog/SubmitToBlog';
 
 function App() {
+
 	return (
 		<>
-			{/* <Preloader/>	 */}
+		<Preloader/>
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
@@ -35,9 +41,11 @@ function App() {
 				<Route path="/blog" element={<Blog />} />
 				<Route path="/recipe-detail" element={<RecipeDetails />} />
 				<Route path="/blog-post-details" element={<BlogPostDetails />} />
+				<Route path="/profile" element={<Profile />} />
+				<Route path="/submit-to-blog" element={<SubmitToBlog/>}/>
 			</Routes>
 
-			
+			<Footer />
 		</>
 	);
 }

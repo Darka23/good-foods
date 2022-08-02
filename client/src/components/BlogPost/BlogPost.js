@@ -4,14 +4,14 @@ const BlogPost = () => {
     return (
         <article className="post-single">
             <div className="post-visuals">
-                <Link to="/blog-post-details.html">
+                <Link to="/blog-post-details">
                     <img src="images/temp-images/post-image-1.jpg" alt="image" />
                 </Link>
             </div>
             <div className="post-contents">
                 <div className="post-contents-inner">
                     <h2>
-                        <Link to="/blog-post-details.html">pasto pizza with fillas cheese toppings</Link>
+                        <Link to="/blog-post-details">pasto pizza with fillas cheese toppings</Link>
                     </h2>
                     <ul className="news-post-meta post-meta">
                         <li className="calendar">23/10/2015</li>
@@ -29,7 +29,7 @@ const BlogPost = () => {
                         metus pulvinar pretium. Etiam tristique metus lorem,
                         scelerisque pharetra dui blandit sit amet
                     </p>
-                    <Link className="read-more-bordered" to="/blog-post-details.html">
+                    <Link className="read-more-bordered" to="/blog-post-details">
                         Read More
                     </Link>
                 </div>

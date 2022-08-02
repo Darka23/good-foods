@@ -1,10 +1,11 @@
 import { logout } from "../../firebase";
+import { Link } from "react-router-dom";
 
 const LogOut = () => {
     return (
-        <button onClick={logout}>
-            LogOut
-        </button>
+        <span className="sign-in-buttons" onClick={logout}>
+            <Link to="#">LogOut</Link>
+        </span>
     );
 }
 

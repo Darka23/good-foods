@@ -4,13 +4,13 @@ const GridRecipe = () => {
     return (
         <div className="listing">
             <div className="image">
-                <Link to="/recipe-detail.html">
+                <Link to="/recipe-detail">
                     <img src="images/temp-images/listing-1.jpg" alt="image" />
                 </Link>
             </div>
             <div className="detail">
                 <h4>
-                    <Link to="/recipe-detail.html">pasto pizza with fillas cheez toppings</Link>
+                    <Link to="/recipe-detail">pasto pizza with fillas cheez toppings</Link>
                 </h4>
                 <p>
                     Nam ornare arcu turpis, nec congu Curabitur quis euismod.

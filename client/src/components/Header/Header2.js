@@ -7,7 +7,7 @@ import LogOut from "../AuthButtons/LogOut"
 const Header2 = () => {
 
 	const [user] = useAuthState(auth);
-	
+
 	return (
 		<>
 			{/*header*/}
@@ -60,17 +60,10 @@ const Header2 = () => {
 													</ul>
 												</li>
 												<li>
-													<Link to="/recipe-detail">Recipe Detail</Link>
+													<Link to="/blog">blog</Link>
 													<ul>
 														<li>
-															<Link to="/recipe-detail">
-																recipe detail version 1
-															</Link>
-														</li>
-														<li>
-															<Link to="recipe-detail2.html">
-																recipe detail version 2
-															</Link>
+															<Link to="single.html">Single post</Link>
 														</li>
 													</ul>
 												</li>
@@ -89,27 +82,31 @@ const Header2 = () => {
 									<div className="right-nav">
 										<div className="wrapper-links">
 
-											{!user ? <LoginRegister/> : <LogOut/>}	
-											
+											{!user ? <LoginRegister /> : <LogOut />}
+
 										</div>
 										<nav className="nav-collapse">
 											<ul className="main-menu right">
 												<li>
-													<Link to="/blog">blog</Link>
-													<ul>
-														<li>
-															<Link to="single.html">Single post</Link>
-														</li>
-													</ul>
-												</li>
-												<li>
 													<Link to="/contacts">contacts</Link>
 												</li>
-												<li>
-													<Link className="submit-recipe" to="/submit-recipe">
-														Submit recipe
-													</Link>
+												{user ? <><li>
+													<Link to="/profile">Profile</Link>
 												</li>
+													<li>
+														<Link className="submit-recipe" to="/submit-recipe">
+															Submit recipe
+														</Link>
+													</li>
+												</>
+													:
+													<li>
+														<Link className="submit-recipe" to="/login">
+															If you want to submit your recipe, login
+														</Link>
+													</li>
+												}
+
 											</ul>
 										</nav>
 									</div>

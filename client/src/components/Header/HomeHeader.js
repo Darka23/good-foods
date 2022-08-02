@@ -67,19 +67,6 @@ const Header = () => {
 												</ul>
 											</li>
 											<li>
-												<Link to="/recipe-detail">Recipe Detail</Link>
-												<ul>
-													<li>
-														<Link to="/recipe-detail.html">recipe detail version 1</Link>
-													</li>
-													<li>
-														<Link to="recipe-detail2.html">
-															recipe detail version 2
-														</Link>
-													</li>
-												</ul>
-											</li>
-											<li>
 												<Link to="/blog">Blog</Link>
 												<ul>
 													<li>
@@ -90,11 +77,22 @@ const Header = () => {
 											<li>
 												<Link to="/contacts">contacts</Link>
 											</li>
-											<li>
-												<Link className="submit-recipe" to="/submit-recipe">
-													Submit recipe
-												</Link>
-											</li>
+											{user ? <><li>
+													<Link to="/profile">Profile</Link>
+												</li>
+													<li>
+														<Link className="submit-recipe" to="/submit-recipe">
+															Submit recipe
+														</Link>
+													</li>
+												</>
+													:
+													<li>
+														<Link className="submit-recipe" to="/login">
+															If you want to submit your recipe, login
+														</Link>
+													</li>
+												}
 										</ul>
 									</nav>
 								</div>

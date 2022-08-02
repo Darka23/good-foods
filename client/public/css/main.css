@@ -707,6 +707,16 @@ span.sign-in-buttons .login {
   font-size: 16px;
   padding: 0 19px;
   display: inline-block;
+  
+}
+
+aside .submit-recipe{
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+aside .submit-recipe:hover{
+  color:black;
+  
 }
 a.mean-expand {
   height: 23px !important;
@@ -2477,7 +2487,6 @@ a.mean-expand {
 }
 .chef-team .chef-detail .type {
   font-size: 12px;
-  text-transform: uppercase;
   color: #9d9a95;
   margin-bottom: 20px;
   display: inline-block;

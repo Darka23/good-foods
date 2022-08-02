@@ -1,5 +1,6 @@
 import Header2 from '../Header/Header2'
 import BlogPost from '../BlogPost/BlogPost';
+import { Link } from "react-router-dom";
 
 const Blog = () => {
     return (
@@ -18,42 +19,46 @@ const Blog = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 col-lg-9">
+
                             {/*single post*/}
-                            <BlogPost/>
+                            <BlogPost />
                             {/*single post*/}
-                            
+
                             <ul className="page-nav">
                                 <li className="current">
-                                    <a href="/">1</a>
+                                    <Link to="/">1</Link>
                                 </li>
                                 <li>
-                                    <a href="/">2</a>
+                                    <Link to="/">2</Link>
                                 </li>
                                 <li>
-                                    <a href="/">3</a>
+                                    <Link to="/">3</Link>
                                 </li>
                             </ul>
                         </div>
                         <div className="col-md-4 col-lg-3">
                             {/*sidebar*/}
                             <aside>
+                                <Link id="blogSubmit" className="submit-recipe" to="/submit-to-blog">
+                                    Post to the Blog Feed
+                                </Link>
                                 <div className="side-bar">
-                                    
+
                                     {/*widget category*/}
                                     <div className="widget category-widget">
                                         <h2>Categories</h2>
                                         <ul>
                                             <li>
-                                                <a href="/">good dishes</a>
+                                                <Link to="/">good dishes</Link>
                                             </li>
                                             <li>
-                                                <a href="/">seasonal eats</a>
+                                                <Link to="/">seasonal eats</Link>
                                             </li>
                                             <li>
-                                                <a href="/">recipes</a>
+                                                <Link to="/">recipes</Link>
                                             </li>
                                             <li>
-                                                <a href="/">potato</a>
+                                                <Link to="/">potato</Link>
                                             </li>
                                         </ul>
                                     </div>
