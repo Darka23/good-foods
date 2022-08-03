@@ -20,11 +20,12 @@ export function getBlogPosts() {
 	})
 }
 
-export function CreateBlogPost(title, description, userId) {
+export function CreateBlogPost(title, description,imageUrl, userId) {
 
 	addDoc(blogRef, {
 		title,
 		description,
+		imageUrl,
 		userId,
 		comments: [],
 	});

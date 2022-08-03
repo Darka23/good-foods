@@ -3,13 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, } from "../../firebase";
 import { getBlogPosts, CreateBlogPost } from "./BlogPostServices";
+import { Link } from "react-router-dom";
 
 
 const SubmitToBlog = () => {
 
-    const [user] = useAuthState(auth);	
+    const [user] = useAuthState(auth);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    console.log(imageUrl);
 
     getBlogPosts();
 
@@ -28,34 +31,45 @@ const SubmitToBlog = () => {
                                     should be logged in to submit a recipe.{" "}
                                 </p>
                                 <div className="submit-recipe-form">
-                                    <form action="/blog" onSubmit={()=> CreateBlogPost(title,description,user.uid)}>
+                                    <div >
                                         <label htmlFor="title">Title</label>
-                                        <input 
+                                        <input
                                             type="text"
-                                            name="title" 
-                                            id="title" 
+                                            name="title"
+                                            id="title"
                                             value={title}
-                                            onChange={(e)=>setTitle(e.target.value)}
+                                            onChange={(e) => setTitle(e.target.value)}
                                         />
                                         <br />
 
-                                        <label htmlFor="recipe-content">Desctiption</label>
+                                        <label htmlFor="content">Desctiption</label>
                                         <textarea
                                             name="content"
                                             id="recipe-content"
                                             cols={30}
                                             rows={10}
                                             value={description}
-                                            onChange={(e)=>setDescription(e.target.value)}
+                                            onChange={(e) => setDescription(e.target.value)}
                                         />
+
+                                        <label htmlFor="imageUrl">ImageUrl</label>
+                                        <input
+                                            type="url"
+                                            id="image-input"
+                                            value={imageUrl}
+                                            onChange={(e) => setImageUrl(e.target.value)}
+                                        />
+
                                         <div className="text-center">
-                                            <button type="submit"
-                                                    className="recipe-submit-btn"
+                                            <Link 
+                                                to="/blog"
+                                                className="recipe-submit-btn"
+                                                onClick={()=>CreateBlogPost(title,description,imageUrl,user.uid)}
                                             >
                                                 Submit Your Blog Post
-                                            </button>
+                                            </Link>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
