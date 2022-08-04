@@ -11,11 +11,13 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [photoUrl, setPhotoUrl] = useState("");
+  
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   const register = () => {
     if (!name) alert("Please enter name");
-    registerWithEmailAndPassword(name, email, password);
+    registerWithEmailAndPassword(name, email, password,photoUrl);
   };
   useEffect(() => {
     if (loading) return;
@@ -44,6 +46,13 @@ function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
+        />
+        <input
+          type="url"
+          id="image-input"
+          value={photoUrl}
+          onChange={(e) => setPhotoUrl(e.target.value)}
+          placeholder="PhotoURL"
         />
         <button className="register__btn" onClick={register}>
           Register

@@ -32,6 +32,7 @@ const firebaseConfig = {
 	appId: "1:913861569339:web:5329de4838d4e48befa51e"
 };
 
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -66,11 +67,13 @@ const logInWithEmailAndPassword = async (email, password) => {
 	}
 };
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+const userRef = collection(db,'users');
+
+const registerWithEmailAndPassword = async (name, email, password,photoUrl) => {
 	try {
 		const res = await createUserWithEmailAndPassword(auth, email, password);
 		const user = res.user;
-		await updateProfile(user, { displayName: name })
+		await updateProfile(user, { displayName: name,photoURL:photoUrl })
 		await addDoc(collection(db, "users"), {
 			uid: user.uid,
 			name,

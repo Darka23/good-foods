@@ -15,7 +15,6 @@ const Profile = () => {
     }
 
     return (
-
         <>
             <Header2 />
             <section className="wrapper-main-contents all-chefs">
@@ -27,7 +26,7 @@ const Profile = () => {
                         <div className="head-chef">
                             <div className="left-side">
                                 <a>
-                                    <img src="images/temp-images/head-chef.jpg" alt="head chef" />
+                                    <img src={user.photoURL} alt="head chef" />
                                 </a>
                             </div>
                             <div className="right-side">

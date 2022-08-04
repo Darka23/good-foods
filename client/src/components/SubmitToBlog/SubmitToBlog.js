@@ -2,7 +2,7 @@ import Header2 from "../Header/Header2";
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, } from "../../firebase";
-import { getBlogPosts, CreateBlogPost } from "./BlogPostServices";
+import { GetBlogPosts, CreateBlogPost } from "../../services/BlogServices";
 import { Link } from "react-router-dom";
 
 
@@ -12,9 +12,8 @@ const SubmitToBlog = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [imageUrl, setImageUrl] = useState("");
-    console.log(imageUrl);
 
-    getBlogPosts();
+    let date = new Date().toLocaleDateString("en-GB");
 
     return (
         <>
@@ -64,7 +63,7 @@ const SubmitToBlog = () => {
                                             <Link 
                                                 to="/blog"
                                                 className="recipe-submit-btn"
-                                                onClick={()=>CreateBlogPost(title,description,imageUrl,user.uid)}
+                                                onClick={()=>CreateBlogPost(title,description,imageUrl,user.uid,user.displayName,date)}
                                             >
                                                 Submit Your Blog Post
                                             </Link>

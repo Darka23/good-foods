@@ -20,9 +20,9 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Reset from './components/Reset/Reset';
 import Profile from './components/Profile/Profile';
-import { auth, useAuth } from './firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import SubmitToBlog from './components/SubmitToBlog/SubmitToBlog';
+import BlogPost from './components/BlogPost/BlogPost';
+
 
 function App() {
 
@@ -38,9 +38,9 @@ function App() {
 				<Route path="/recipe-listing" element={<RecipeListGrid />} />
 				<Route path="/recipe-listing-grid" element={<RecipeList />} />
 				<Route path="/contacts" element={<Contacts />} />
-				<Route path="/blog" element={<Blog />} />
+				<Route path="/blog" element={<Blog/>} />
 				<Route path="/recipe-detail" element={<RecipeDetails />} />
-				<Route path="/blog-post-details" element={<BlogPostDetails />} />
+				<Route path="/blog-post-details/:blogPostId" element={<BlogPostDetails />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/submit-to-blog" element={<SubmitToBlog/>}/>
 			</Routes>

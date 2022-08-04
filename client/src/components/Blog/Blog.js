@@ -1,8 +1,21 @@
 import Header2 from '../Header/Header2'
 import BlogPost from '../BlogPost/BlogPost';
 import { Link } from "react-router-dom";
+import { GetBlogPosts } from '../../services/BlogServices';
+import Preloader from '../Preloader';
+import { useEffect, useState } from 'react';
 
 const Blog = () => {
+
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        GetBlogPosts()
+            .then((data) => {
+                setPosts(data);
+            })
+    }, []);
+
     return (
         <>
             <Header2 />
@@ -20,9 +33,9 @@ const Blog = () => {
                     <div className="row">
                         <div className="col-md-8 col-lg-9">
 
-                            {/*single post*/}
-                            <BlogPost />
-                            {/*single post*/}
+                            {posts.map((post) => {
+                                return <BlogPost key={post.id} props={post} />
+                            })}
 
                             <ul className="page-nav">
                                 <li className="current">
