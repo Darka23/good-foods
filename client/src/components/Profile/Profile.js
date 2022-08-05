@@ -16,7 +16,6 @@ const Profile = () => {
 
     return (
         <>
-            <Header2 />
             <section className="wrapper-main-contents all-chefs">
                 <div className="container">
                     <div className="line-heading">

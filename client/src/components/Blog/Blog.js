@@ -9,16 +9,16 @@ const Blog = () => {
 
     const [posts, setPosts] = useState([]);
 
+    
     useEffect(() => {
         GetBlogPosts()
-            .then((data) => {
-                setPosts(data);
-            })
+        .then((data) => {
+            setPosts(data);
+        })
     }, []);
 
     return (
         <>
-            <Header2 />
             <div className="banner banner-blog">
                 <div className="container ">
                     <div className="main-heading">
@@ -56,26 +56,7 @@ const Blog = () => {
                                     Post to the Blog Feed
                                 </Link>
                                 <div className="side-bar">
-
-                                    {/*widget category*/}
-                                    <div className="widget category-widget">
-                                        <h2>Categories</h2>
-                                        <ul>
-                                            <li>
-                                                <Link to="/">good dishes</Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/">seasonal eats</Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/">recipes</Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/">potato</Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {/*widget category ends*/}
+                                    
                                 </div>
                             </aside>
                             {/*sidebar ends*/}

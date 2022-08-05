@@ -8,7 +8,6 @@ import HomeHeader from '../../components/Header/HomeHeader'
 const Home = () => {
     return (
         <>
-            <HomeHeader/>
             {/* <MainSlider/> */}
             <SearchBar />
             <HotRecipes />

@@ -17,35 +17,37 @@ const BlogPost = (props) => {
 
 
     return (
-        <article className="post-single">
-            <div className="post-visuals">
-                <Link to={`/blog-post-details/${info?.id}`}>
-                    <img src={info?.imageUrl} alt="image" />
-                </Link>
-            </div>
-            <div className="post-contents">
-                <div className="post-contents-inner">
-                    <h2>
-                        <Link to={`/blog-post-details/${info?.id}`}>{info?.title}</Link>
-                    </h2>
-                    <ul className="news-post-meta post-meta">
-                        <li className="calendar">{info?.date}</li>
-                        <li className="author">
-                            <Link to="/">{info?.username}</Link>
-                        </li>
-                        <li className="comments">
-                            <Link to="/">{info?.comments.length}</Link>
-                        </li>
-                    </ul>
-                    <p>
-                        {info?.description}
-                    </p>
-                    <Link className="read-more-bordered" to={`/blog-post-details/${info?.id}`}>
-                        Read More
+        <>
+            <article className="post-single">
+                <div className="post-visuals">
+                    <Link to={`/blog-post-details/${info?.id}`}>
+                        <img src={info?.imageUrl} alt="image" />
                     </Link>
                 </div>
-            </div>
-        </article>
+                <div className="post-contents">
+                    <div className="post-contents-inner">
+                        <h2>
+                            <Link to={`/blog-post-details/${info?.id}`}>{info?.title}</Link>
+                        </h2>
+                        <ul className="news-post-meta post-meta">
+                            <li className="calendar">{info?.date}</li>
+                            <li className="author">
+                                <Link to="/">{info?.username}</Link>
+                            </li>
+                            <li className="comments">
+                                <Link to="/">{info?.comments?.length}</Link>
+                            </li>
+                        </ul>
+                        <p>
+                            {info?.description}
+                        </p>
+                        <Link className="read-more-bordered" to={`/blog-post-details/${info?.id}`}>
+                            Read More
+                        </Link>
+                    </div>
+                </div>
+            </article>
+        </>
     );
 }
 

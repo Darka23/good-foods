@@ -3,7 +3,6 @@ import Header2 from '../Header/Header2'
 const Contacts = () => {
     return (
         <>
-            <Header2 />
             <div className="banner banner-blog">
                 <div className="container ">
                     <div className="main-heading">

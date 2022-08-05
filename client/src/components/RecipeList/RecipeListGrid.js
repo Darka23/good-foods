@@ -7,7 +7,6 @@ import AdvanceSearchForm from "../AdvanceSearchForm/AdvanceSearchForm";
 const RecipeListGrid = () => {
 	return (
 		<>
-			<Header2 />
 			{/*banner*/}
 			<div className="banner banner-blog">
 				<div className="container ">

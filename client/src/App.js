@@ -22,13 +22,15 @@ import Reset from './components/Reset/Reset';
 import Profile from './components/Profile/Profile';
 import SubmitToBlog from './components/SubmitToBlog/SubmitToBlog';
 import BlogPost from './components/BlogPost/BlogPost';
+import Header2 from './components/Header/Header2';
 
 
 function App() {
 
 	return (
 		<>
-		<Preloader/>
+		{/* <Preloader/> */}
+		<Header2/>
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />

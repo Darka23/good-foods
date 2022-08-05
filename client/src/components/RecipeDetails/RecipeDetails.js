@@ -4,7 +4,6 @@ import Header2 from '../Header/Header2'
 const RecipeDetails = () => {
     return (
         <>
-            <Header2 />
             <div className="recipes-home-body inner-page">
                 <div className="container">
                     <div className="row">
