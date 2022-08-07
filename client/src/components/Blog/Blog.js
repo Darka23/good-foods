@@ -33,9 +33,11 @@ const Blog = () => {
                     <div className="row">
                         <div className="col-md-8 col-lg-9">
 
-                            {posts.map((post) => {
+                            {posts.length ?
+                            posts.map((post) => {
                                 return <BlogPost key={post.id} props={post} />
-                            })}
+                            })
+                            :<h1>No Posts...</h1>}
 
                             <ul className="page-nav">
                                 <li className="current">

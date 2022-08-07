@@ -3,7 +3,7 @@ import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db } from "../firebase";
 import { v4 as uuidv4 } from 'uuid';
 
-export async function AddCommentToPost(name, email, subject, message, postId) {
+export async function AddCommentToPost(name, email, subject, message, postId,userPhotoURL) {
 
     let date = new Date().toLocaleDateString("en-GB");
     const id = uuidv4();
@@ -16,7 +16,8 @@ export async function AddCommentToPost(name, email, subject, message, postId) {
         subject,
         message,
         id,
-        date
+        date,
+        userPhotoURL
     }
 
     await updateDoc(postRef,{

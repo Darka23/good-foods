@@ -15,6 +15,7 @@ const SubmitToBlog = () => {
 
     let date = new Date().toLocaleDateString("en-GB");
 
+
     return (
         <>
             <div className="recipes-home-body inner-page">
@@ -59,10 +60,10 @@ const SubmitToBlog = () => {
                                         />
 
                                         <div className="text-center">
-                                            <Link 
+                                            <Link
                                                 to="/blog"
                                                 className="recipe-submit-btn"
-                                                onClick={()=>CreateBlogPost(title,description,imageUrl,user.uid,user.displayName,date)}
+                                                onClick={() => CreateBlogPost(title, description, imageUrl, user.uid, user.displayName, date, user.photoURL)}
                                             >
                                                 Submit Your Blog Post
                                             </Link>

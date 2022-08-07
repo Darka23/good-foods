@@ -11,7 +11,7 @@ const Comment = (comment) => {
                 <div className="gravatar">
                     <Link to="/">
                         <img
-                            src="../../images/temp-images/gravatar1.jpg"
+                            src={data.userPhotoURL}
                             alt="gravatar"
                         />
                     </Link>

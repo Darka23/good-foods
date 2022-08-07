@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useParams } from "react-router-dom";
-import { GetBlogPosts } from "../../services/BlogServices";
+import { auth } from "../../firebase";
+import { DeleteBlogPost, GetBlogPosts, EditBlogPost } from "../../services/BlogServices";
 import Comment from "../Comment/Comment";
 import Header2 from "../Header/Header2";
 import SubmitComment from "../SubmitComment/SubmitComment";
@@ -8,10 +10,13 @@ import SubmitComment from "../SubmitComment/SubmitComment";
 
 const BlogPostDetails = () => {
 
+
+
     const { blogPostId } = useParams();
 
     const [blogPost, setBlogPost] = useState({});
     const [comments, setComments] = useState([]);
+
 
     useEffect(() => {
         GetBlogPosts()
@@ -22,11 +27,14 @@ const BlogPostDetails = () => {
             })
     }, [])
 
-    function AddComment(comment){
-
-        setComments((state)=>[...state, comment])
-        console.log(comment);
+    function AddComment(comment) {
+        setComments((state) => [...state, comment])
     }
+
+    const [user] = useAuthState(auth);
+
+    let currentUserIsAuthor = user.uid == blogPost.userId;
+
 
     return (
         <>
@@ -62,6 +70,23 @@ const BlogPostDetails = () => {
                                         </p>
                                         <br />
 
+                                        {currentUserIsAuthor
+                                            ?
+                                            <div className="delete-edit-buttons">
+                                                <Link 
+                                                    to="/blog" 
+                                                    className="default-btn mid-button theme-tag-color"
+                                                    onClick={DeleteBlogPost(blogPost.id)}>Delete Post
+                                                </Link>
+                                                <Link
+                                                    to="/blog" 
+                                                    className="default-btn mid-button light-color"
+                                                    onClick={EditBlogPost()}>Edit Post
+                                                </Link>
+                                            </div>
+                                            :<></>
+                                        }
+
 
                                         <div className="separator-post" />
 
@@ -69,7 +94,7 @@ const BlogPostDetails = () => {
                                             <div className="avatar">
                                                 <Link to="/">
                                                     <img
-                                                        src="../../images/temp-images/author-avatar.jpg"
+                                                        src={blogPost.photoURL}
                                                         alt="avatar"
                                                     />
                                                 </Link>
@@ -86,10 +111,10 @@ const BlogPostDetails = () => {
                                             <h3>comments</h3>
                                             <ul className="comments-list">
 
-                                                {comments.length 
+                                                {comments.length
                                                     ?
-                                                    comments.map((comment)=>{
-                                                        return <Comment key={comment.id} comment={comment}/>
+                                                    comments.map((comment) => {
+                                                        return <Comment key={comment.id} comment={comment} />
                                                     })
                                                     :
                                                     <h1>No comments...</h1>
@@ -97,7 +122,7 @@ const BlogPostDetails = () => {
 
                                             </ul>
                                             <div className="separator-post" />
-                                            <SubmitComment postId={blogPostId} addCommentHandler={AddComment}/>
+                                            <SubmitComment postId={blogPostId} addCommentHandler={AddComment} />
                                         </div>
                                     </div>
                                 </div>

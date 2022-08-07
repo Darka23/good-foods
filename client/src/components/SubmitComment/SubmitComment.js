@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AddCommentToPost } from '../../services/CommentServices';
 import { GetBlogPosts } from '../../services/BlogServices';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase';
 
 
 const SubmitComment = (post) => {
 
     const postId = post.postId;
+    const [user] = useAuthState(auth);
 
 
     const [name, setName] = useState("");
@@ -16,7 +19,7 @@ const SubmitComment = (post) => {
 
 
     function submitCommentHandler() {
-        AddCommentToPost(name, email, subject, message, postId)
+        AddCommentToPost(name, email, subject, message, postId,user.photoURL)
             .then((data) => {
                 setName("");
                 setEmail("");

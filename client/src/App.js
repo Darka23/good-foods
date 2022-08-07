@@ -1,5 +1,7 @@
 import { Routes, Route, Router, Redirect, Navigate } from 'react-router-dom'
 import { useState } from 'react';
+import { auth, useAuth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 import './App.css';
 
@@ -26,10 +28,15 @@ import Header2 from './components/Header/Header2';
 
 
 function App() {
+	
+	const [user] = useAuthState(auth);
+
+	// while(!user){
+	// 	return <Preloader/>
+	// }
 
 	return (
-		<>
-		{/* <Preloader/> */}
+		<>	
 		<Header2/>
 			<Routes>
 				<Route path="/" element={<Home />} />

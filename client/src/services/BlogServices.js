@@ -1,16 +1,15 @@
-import { Navigate } from "react-router-dom";
 
 import {
 	getDocs,
 	collection,
 	addDoc,
+	deleteDoc,
+	doc
 } from "firebase/firestore";
 
 import { db } from "../firebase";
 
 const blogRef = collection(db, 'blogPosts');
-const userRef = collection(db, 'users');
-
 
 export function GetBlogPosts() {
 
@@ -25,7 +24,7 @@ export function GetBlogPosts() {
 
 }
 
-export function CreateBlogPost(title, description, imageUrl, userId,username,date) {
+export function CreateBlogPost(title, description, imageUrl, userId, username, date, photoURL) {
 
 	addDoc(blogRef, {
 		title,
@@ -34,6 +33,16 @@ export function CreateBlogPost(title, description, imageUrl, userId,username,dat
 		userId,
 		username,
 		date,
+		photoURL,
 		comments: [],
 	});
+}
+
+export function DeleteBlogPost(postId){
+
+	deleteDoc(doc(db,"blogPosts",postId));
+}
+
+export function EditBlogPost(){
+	
 }
