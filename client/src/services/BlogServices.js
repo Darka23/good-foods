@@ -4,7 +4,8 @@ import {
 	collection,
 	addDoc,
 	deleteDoc,
-	doc
+	doc,
+	updateDoc
 } from "firebase/firestore";
 
 import { db } from "../firebase";
@@ -38,11 +39,18 @@ export function CreateBlogPost(title, description, imageUrl, userId, username, d
 	});
 }
 
-export function DeleteBlogPost(postId){
+export function DeleteBlogPost(postId) {
 
-	deleteDoc(doc(db,"blogPosts",postId));
+	deleteDoc(doc(db, "blogPosts", postId));
 }
 
-export function EditBlogPost(){
-	
+export function EditBlogPost(blogPostId, newTitle, newDescription, newImageUrl) {
+
+	const postRef = doc(db, "blogPosts", blogPostId);
+
+	updateDoc(postRef, {
+		title: newTitle,
+		description: newDescription,
+		imageUrl: newImageUrl,
+	});
 }

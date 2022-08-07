@@ -2,28 +2,43 @@ import Header2 from "../Header/Header2";
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, } from "../../firebase";
-import { GetBlogPosts, CreateBlogPost } from "../../services/BlogServices";
-import { Link } from "react-router-dom";
+import { GetBlogPosts, CreateBlogPost, EditBlogPost } from "../../services/BlogServices";
+import { Link, useParams } from "react-router-dom";
+import Preloader from "../Preloader";
 
+const BlogPostEdit = () => {
 
-const SubmitToBlog = () => {
+    const {blogPostId} = useParams();
 
-    const [user] = useAuthState(auth);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [previousBlogPost, setPreviousBlogPost] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
 
     let date = new Date().toLocaleDateString("en-GB");
 
+    useEffect(() => {
+        GetBlogPosts()
+            .then((data) => {
+                let desiredPost = data.find(x => x.id == blogPostId)
+                setPreviousBlogPost(desiredPost);
+                setIsLoading(false);
+            })
+    }, [])
 
-    return (
-        <>
-            <div className="recipes-home-body inner-page">
+    
+    if(isLoading){
+        return <Preloader/>
+    }
+    
+    return ( 
+        <div className="recipes-home-body inner-page">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 col-lg-9">
                             <div className="recipe-set submit-recipe-set">
-                                <h2>Submit Blog Post</h2>
+                                <h2>Edit Blog Post</h2>
                                 <div className="submit-recipe-form">
                                     <div >
                                         <label htmlFor="title">Title</label>
@@ -33,6 +48,7 @@ const SubmitToBlog = () => {
                                             id="title"
                                             value={title}
                                             onChange={(e) => setTitle(e.target.value)}
+                                            placeholder={previousBlogPost.title}
                                         />
                                         <br />
 
@@ -44,6 +60,7 @@ const SubmitToBlog = () => {
                                             rows={10}
                                             value={description}
                                             onChange={(e) => setDescription(e.target.value)}
+                                            placeholder={previousBlogPost.description}
                                         />
 
                                         <label htmlFor="imageUrl">ImageUrl</label>
@@ -52,15 +69,16 @@ const SubmitToBlog = () => {
                                             id="image-input"
                                             value={imageUrl}
                                             onChange={(e) => setImageUrl(e.target.value)}
+                                            placeholder={previousBlogPost.imageUrl}
                                         />
 
                                         <div className="text-center">
                                             <Link
-                                                to="/blog"
+                                                to={`/blog-post-details/${blogPostId}`}
                                                 className="recipe-submit-btn"
-                                                onClick={() => CreateBlogPost(title, description, imageUrl, user.uid, user.displayName, date, user.photoURL)}
+                                                onClick={() => EditBlogPost(blogPostId,title, description, imageUrl)}
                                             >
-                                                Submit Your Blog Post
+                                                Edit Blog Post
                                             </Link>
                                         </div>
                                     </div>
@@ -70,8 +88,7 @@ const SubmitToBlog = () => {
                     </div>
                 </div>
             </div>
-        </>
-    );
+     );
 }
-
-export default SubmitToBlog;
+ 
+export default BlogPostEdit;

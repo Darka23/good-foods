@@ -8,14 +8,20 @@ import { useEffect, useState } from 'react';
 const Blog = () => {
 
     const [posts, setPosts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     
     useEffect(() => {
         GetBlogPosts()
         .then((data) => {
             setPosts(data);
+            setIsLoading(false);
         })
     }, []);
+
+    if(isLoading){
+        return <Preloader/>
+    }
 
     return (
         <>

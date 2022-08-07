@@ -3,8 +3,15 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 import LoginRegister from "../AuthButtons/LoginRegister";
 import LogOut from "../AuthButtons/LogOut"
+import { useEffect, useState } from "react";
 
 const Header2 = () => {
+
+	const[isLoading, setIsLoading] = useState(true);
+
+	useEffect(()=>{
+		
+	})
 
 	const [user] = useAuthState(auth);
 

@@ -5,17 +5,17 @@ import { auth } from "../../firebase";
 import { DeleteBlogPost, GetBlogPosts, EditBlogPost } from "../../services/BlogServices";
 import Comment from "../Comment/Comment";
 import Header2 from "../Header/Header2";
+import Preloader from "../Preloader";
 import SubmitComment from "../SubmitComment/SubmitComment";
 
 
 const BlogPostDetails = () => {
 
-
-
     const { blogPostId } = useParams();
 
     const [blogPost, setBlogPost] = useState({});
     const [comments, setComments] = useState([]);
+    const [isLoading,setIsLoading] = useState(true);
 
 
     useEffect(() => {
@@ -24,6 +24,7 @@ const BlogPostDetails = () => {
                 let desiredPost = data.find(x => x.id == blogPostId)
                 setBlogPost(desiredPost);
                 setComments(desiredPost.comments);
+                setIsLoading(false);
             })
     }, [])
 
@@ -31,10 +32,14 @@ const BlogPostDetails = () => {
         setComments((state) => [...state, comment])
     }
 
+    
     const [user] = useAuthState(auth);
-
+    
     let currentUserIsAuthor = user.uid == blogPost.userId;
-
+    
+    if(isLoading){
+        return <Preloader/>
+    }
 
     return (
         <>
@@ -72,18 +77,17 @@ const BlogPostDetails = () => {
 
                                         {currentUserIsAuthor
                                             ?
-                                            <div className="delete-edit-buttons">
+                                            <>
                                                 <Link 
                                                     to="/blog" 
                                                     className="default-btn mid-button theme-tag-color"
-                                                    onClick={DeleteBlogPost(blogPost.id)}>Delete Post
+                                                    onClick={()=>DeleteBlogPost(blogPost.id)}>Delete Post
                                                 </Link>
                                                 <Link
-                                                    to="/blog" 
-                                                    className="default-btn mid-button light-color"
-                                                    onClick={EditBlogPost()}>Edit Post
+                                                    to={`/blog-post-edit/${blogPost.id}`}
+                                                    className="default-btn mid-button light-color">Edit Post
                                                 </Link>
-                                            </div>
+                                            </>
                                             :<></>
                                         }
 
