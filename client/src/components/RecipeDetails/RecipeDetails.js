@@ -1,7 +1,42 @@
+import { useParams } from 'react-router-dom';
+import { GetAllRecipes } from '../../services/RecipeServices';
 import Header2 from '../Header/Header2'
+import RatingIcons from '../RatingIcons/RatingIcons';
+import React, { useState, useEffect } from 'react';
+import Preloader from '../Preloader';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase';
 
 
 const RecipeDetails = () => {
+
+    const { recipeId } = useParams();
+
+    const [recipe, setRecipe] = useState({});
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const [user] = useAuthState(auth);
+    let currentUserIsAuthor;
+
+    if (user) {
+        currentUserIsAuthor = user.uid == recipe.userId;
+    }
+
+
+    useEffect(() => {
+        GetAllRecipes()
+            .then((data) => {
+                let desiredRecipe = data.find(x => x.id == recipeId)
+                setRecipe(desiredRecipe);
+                setIsLoading(false);
+            })
+    }, [])
+
+    if (isLoading) {
+        return <Preloader />
+    }
+
     return (
         <>
             <div className="recipes-home-body inner-page">
@@ -13,674 +48,58 @@ const RecipeDetails = () => {
                                     <div className="single-recipe-detail">
                                         <div className="wrapper-recipe-heading">
                                             <div className="heading">
-                                                <h2>Chocolate Earl Gray Pots de Creme Recipe</h2>
-                                                <div className="rating-box">
-                                                    <span className="rating-icons">
-                                                        <svg
-                                                            className="icon-container"
-                                                            width={25}
-                                                            height={19}
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 25 19"
-                                                        >
-                                                            <g>
-                                                                <title>background</title>
-                                                                <rect
-                                                                    fill="none"
-                                                                    height={21}
-                                                                    width={27}
-                                                                    y={-1}
-                                                                    x={-1}
-                                                                />
-                                                            </g>
-                                                            <g>
-                                                                <title>Layer 1</title>
-                                                                <path
-                                                                    className="icon-svg"
-                                                                    d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z"
-                                                                    clipRule="evenodd"
-                                                                    fillRule="evenodd"
-                                                                />
-                                                            </g>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="rating-icons">
-                                                        <svg
-                                                            className="icon-container"
-                                                            width={25}
-                                                            height={19}
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 25 19"
-                                                        >
-                                                            <g>
-                                                                <title>background</title>
-                                                                <rect
-                                                                    fill="none"
-                                                                    height={21}
-                                                                    width={27}
-                                                                    y={-1}
-                                                                    x={-1}
-                                                                />
-                                                            </g>
-                                                            <g>
-                                                                <title>Layer 1</title>
-                                                                <path
-                                                                    className="icon-svg"
-                                                                    d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z"
-                                                                    clipRule="evenodd"
-                                                                    fillRule="evenodd"
-                                                                />
-                                                            </g>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="rating-icons">
-                                                        <svg
-                                                            className="icon-container"
-                                                            width={25}
-                                                            height={19}
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 25 19"
-                                                        >
-                                                            <g>
-                                                                <title>background</title>
-                                                                <rect
-                                                                    fill="none"
-                                                                    height={21}
-                                                                    width={27}
-                                                                    y={-1}
-                                                                    x={-1}
-                                                                />
-                                                            </g>
-                                                            <g>
-                                                                <title>Layer 1</title>
-                                                                <path
-                                                                    className="icon-svg"
-                                                                    d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z"
-                                                                    clipRule="evenodd"
-                                                                    fillRule="evenodd"
-                                                                />
-                                                            </g>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="rating-icons">
-                                                        <svg
-                                                            className="icon-container"
-                                                            width={25}
-                                                            height={19}
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 25 19"
-                                                        >
-                                                            <g>
-                                                                <title>background</title>
-                                                                <rect
-                                                                    fill="none"
-                                                                    height={21}
-                                                                    width={27}
-                                                                    y={-1}
-                                                                    x={-1}
-                                                                />
-                                                            </g>
-                                                            <g>
-                                                                <title>Layer 1</title>
-                                                                <path
-                                                                    className="icon-svg"
-                                                                    d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z"
-                                                                    clipRule="evenodd"
-                                                                    fillRule="evenodd"
-                                                                />
-                                                            </g>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="rating-icons">
-                                                        <svg
-                                                            className="icon-container"
-                                                            width={25}
-                                                            height={19}
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 25 19"
-                                                        >
-                                                            <g>
-                                                                <title>background</title>
-                                                                <rect
-                                                                    fill="none"
-                                                                    height={21}
-                                                                    width={27}
-                                                                    y={-1}
-                                                                    x={-1}
-                                                                />
-                                                            </g>
-                                                            <g>
-                                                                <title>Layer 1</title>
-                                                                <path
-                                                                    className="icon-svg"
-                                                                    d="m24.671816,17.625433c0,0.438 -0.286999,0.801001 -0.681,0.935001c-0.095001,0.036999 -0.198002,0.064999 -0.318001,0.064999l-16.000998,0c-0.553,0 -1,-0.448 -1,-1c0,-0.553999 0.447,-1 1,-1l14.950999,0c-0.500999,-5.053999 -4.764997,-9 -9.950999,-9c-5.523,0 -10,4.477001 -10,10c0,0 0.063,1 -1,1c-1.062,0 -1,-1 -1,-1c0,-5.769999 4.071,-10.581999 9.495001,-11.734999c-0.306002,-0.52 -0.495001,-1.117001 -0.495001,-1.765001c0,-1.933999 1.566999,-3.499999 3.5,-3.499999c1.931999,0 3.499,1.567 3.499,3.499999c0,0.739 -0.232998,1.423 -0.624998,1.989c4.984999,1.459 8.625998,6.056 8.625998,11.511l0,0zm-11.499,-15c-0.828999,0 -1.500999,0.670001 -1.500999,1.499001c0,0.827999 0.672001,1.5 1.500999,1.5c0.828001,0 1.499001,-0.672001 1.499001,-1.5c0,-0.829 -0.671,-1.499001 -1.499001,-1.499001l0,0z"
-                                                                    clipRule="evenodd"
-                                                                    fillRule="evenodd"
-                                                                />
-                                                            </g>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="rating-figure">(4.1 / 5)</span>
-                                                </div>
-                                            </div>
-                                            <div className="recipe-media">
-                                                <a
-                                                    className="button-dark watch-video swipebox"
-                                                    href="https://vimeo.com/15306847"
-                                                >
-                                                    Watch Video
-                                                </a>
+                                                <h2>{recipe.title}</h2>
+                                                <RatingIcons />
                                             </div>
                                         </div>
                                         <div className="slider-recipe-detail">
-                                            <div className="wrapper-slider-detail">
-                                                <div className="top-slider">
-                                                    <div
-                                                        id="single-slider-flex"
-                                                        className="flexslider slider-detail"
-                                                    >
-                                                        <ul className="slides">
-                                                            <li>
-                                                                <a
-                                                                    rel="recipe-slider-1"
-                                                                    href="images/temp-images/slide-recipe-detail.jpg"
-                                                                    className="swipebox"
-                                                                >
-                                                                    <img
-                                                                        src="images/temp-images/slide-recipe-detail.jpg"
-                                                                        alt="Recipe Single Image"
-                                                                    />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    rel="recipe-slider-1"
-                                                                    href="images/temp-images/slide-recipe-detail.jpg"
-                                                                    className="swipebox"
-                                                                >
-                                                                    <img
-                                                                        src="images/temp-images/slide-recipe-detail.jpg"
-                                                                        alt="Recipe Single Image"
-                                                                    />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    rel="recipe-slider-1"
-                                                                    href="images/temp-images/slide-recipe-detail.jpg"
-                                                                    className="swipebox"
-                                                                >
-                                                                    <img
-                                                                        src="images/temp-images/slide-recipe-detail.jpg"
-                                                                        alt="Recipe Single Image"
-                                                                    />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    rel="recipe-slider-1"
-                                                                    href="images/temp-images/slide-recipe-detail.jpg"
-                                                                    className="swipebox"
-                                                                >
-                                                                    <img
-                                                                        src="images/temp-images/slide-recipe-detail.jpg"
-                                                                        alt="Recipe Single Image"
-                                                                    />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    rel="recipe-slider-1"
-                                                                    href="images/temp-images/slide-recipe-detail.jpg"
-                                                                    className="swipebox"
-                                                                >
-                                                                    <img
-                                                                        src="images/temp-images/slide-recipe-detail.jpg"
-                                                                        alt="Recipe Single Image"
-                                                                    />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    rel="recipe-slider-1"
-                                                                    href="images/temp-images/slide-recipe-detail.jpg"
-                                                                    className="swipebox"
-                                                                >
-                                                                    <img
-                                                                        src="images/temp-images/slide-recipe-detail.jpg"
-                                                                        alt="Recipe Single Image"
-                                                                    />
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <span className="custom-arrows wider">
-                                                        <span
-                                                            className="left-arrow slick-arrow"
-                                                            data-direction="prev"
-                                                            style={{ display: "table-cell" }}
-                                                        >
-                                                            <i className="fa fa-arrow-left" />
-                                                        </span>
-                                                        <span
-                                                            className="right-arrow slick-arrow"
-                                                            data-direction="next"
-                                                            style={{ display: "table-cell" }}
-                                                        >
-                                                            <i className="fa fa-arrow-right" />
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                                <div id="recipe-slider-carousel">
-                                                    <div id="recipe-carousel-flex">
-                                                        <ul className="slides">
-                                                            <li>
-                                                                <img
-                                                                    src="images/temp-images/slider-detail-thumb.jpg"
-                                                                    alt="Recipe Carousel Thumbnail"
-                                                                />
-                                                            </li>
-                                                            <li>
-                                                                <img
-                                                                    src="images/temp-images/slider-detail-thumb.jpg"
-                                                                    alt="Recipe Carousel Thumbnail"
-                                                                />
-                                                            </li>
-                                                            <li>
-                                                                <img
-                                                                    src="images/temp-images/slider-detail-thumb.jpg"
-                                                                    alt="Recipe Carousel Thumbnail"
-                                                                />
-                                                            </li>
-                                                            <li>
-                                                                <img
-                                                                    src="images/temp-images/slider-detail-thumb.jpg"
-                                                                    alt="Recipe Carousel Thumbnail"
-                                                                />
-                                                            </li>
-                                                            <li>
-                                                                <img
-                                                                    src="images/temp-images/slider-detail-thumb.jpg"
-                                                                    alt="Recipe Carousel Thumbnail"
-                                                                />
-                                                            </li>
-                                                            <li>
-                                                                <img
-                                                                    src="images/temp-images/slider-detail-thumb.jpg"
-                                                                    alt="Recipe Carousel Thumbnail"
-                                                                />
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <span className="custom-arrows wider">
-                                                        <span
-                                                            className="left-arrow slick-arrow"
-                                                            data-direction="prev"
-                                                            style={{ display: "table-cell" }}
-                                                        >
-                                                            <i className="fa fa-arrow-left" />
-                                                        </span>
-                                                        <span
-                                                            className="right-arrow slick-arrow"
-                                                            data-direction="next"
-                                                            style={{ display: "table-cell" }}
-                                                        >
-                                                            <i className="fa fa-arrow-right" />
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </div>
+                                            <img src={recipe.imageUrl} alt="detailsImage"></img>
                                             <ul className="recipe-specs">
-                                                <li>
-                                                    <span className="count">5</span>
-                                                    <span className="text">Yield</span>
-                                                </li>
-                                                <li>
-                                                    <span className="count">7</span>
-                                                    <span className="text">Servings</span>
-                                                </li>
-                                                <li>
-                                                    <span className="count">
-                                                        20<span>m</span>
-                                                    </span>
-                                                    <span className="text">Prep Time</span>
-                                                </li>
-                                                <li>
-                                                    <span className="count">
-                                                        30<span>m</span>
-                                                    </span>
-                                                    <span className="text">Cook Time</span>
-                                                </li>
-                                                <li>
-                                                    <span className="count">
-                                                        50<span>m</span>
-                                                    </span>
-                                                    <span className="text">Ready In</span>
-                                                </li>
+                                                <li><span className="count">{recipe.preparationTime}<span>m</span></span><span className="text">Prep Time</span></li>
+                                                <li><span className="count">{recipe.cookTime}<span>m</span></span><span className="text">Cook Time</span></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div className="recipe-detail-body">
-                                        <a href="/" className="print-button">
-                                            <i className="fa fa-print" />
-                                            Print Recipe
-                                        </a>
-                                        <ul className="pre-tags">
-                                            <li>
-                                                <span>Cuisine : </span>Chinese
-                                            </li>
-                                            <li>
-                                                <span>Course : </span>Side Dish
-                                            </li>
-                                            <li>
-                                                <span>Skill Level : </span>Advanced
-                                            </li>
-                                        </ul>
+
                                         <div className="separator-post" />
                                         <p>
-                                            Rinse the chicken pieces in cold water and pat dry. Place the
-                                            chicken in a large, resealable zip-top bag and pour in the
-                                            marinade. Toss the chicken inside the bag to cover evenly with
-                                            the marinade and refrigerate for 12 hours or as long as
-                                            overnight icken pieces in cold water and pat dry.
+                                            {recipe.description}
                                         </p>
                                         <br />
                                         <div className="ingredients-checkbox">
                                             <div className="ingredients">
                                                 <h3>Ingredients</h3>
-                                                <ul>
-                                                    <li>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            60 ml extra virgin olive oil
-                                                        </label>
-                                                    </li>
-                                                    <li>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            230 g bacon, diced into 1/4 -inch pieces
-                                                        </label>
-                                                    </li>
-                                                    <li>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            120 ml dry white wine
-                                                        </label>
-                                                    </li>
-                                                    <li>
-                                                        <label>
-                                                            <input type="checkbox" />3 large eggs
-                                                        </label>
-                                                    </li>
-                                                    <li>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            180 ml grated parmesan cheese
-                                                        </label>
-                                                    </li>
-                                                    <li>
-                                                        <label>
-                                                            <input type="checkbox" />1 Spoon Salt
-                                                        </label>
-                                                    </li>
-                                                </ul>
+                                                <p>{recipe.contents}</p>
                                             </div>
                                             <div className="nutritional">
-                                                <h3>Nutritional</h3>
-                                                <div className="nutrition-detail">
-                                                    <div className="left-box">
-                                                        Protine
-                                                        <br />
-                                                        <span>6.60g</span>
-                                                    </div>
-                                                    <div className="right-box">
-                                                        Fat Saturated
-                                                        <br />
-                                                        <span>39.5g</span>
-                                                    </div>
-                                                </div>
+                                                <h3>Preparation</h3>
+                                                <p>{recipe.preparation}</p>
                                                 <div className="separator-post" />
-                                                <div className="nutrition-detail">
-                                                    <div className="left-box">
-                                                        Deitary Fiber
-                                                        <br />
-                                                        <span>50g</span>
-                                                    </div>
-                                                    <div className="right-box">
-                                                        Sodium
-                                                        <br />
-                                                        <span>10g</span>
-                                                    </div>
-                                                </div>
-                                                <div className="separator-post" />
-                                                <div className="nutrition-detail">
-                                                    <div className="left-box">
-                                                        Fat Total
-                                                        <br />
-                                                        <span>60g</span>
-                                                    </div>
-                                                    <div className="right-box">
-                                                        Carbohydrate
-                                                        <br />
-                                                        <span>0</span>
-                                                    </div>
-                                                </div>
-                                                <div className="separator-post" />
-                                                <div className="nutrition-detail">
-                                                    <div className="left-box">
-                                                        Energy
-                                                        <br />
-                                                        <span>900mg</span>
-                                                    </div>
-                                                    <div className="right-box">
-                                                        Cholesterol
-                                                        <br />
-                                                        <span>80g</span>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div className="recipe-steps">
-                                            <h3 className="lined">Step by Step method</h3>
-                                            <ul className="steps-list">
-                                                <li>
-                                                    <div className="step-single">
-                                                        <div className="step-image">
-                                                            <a
-                                                                href="images/temp-images/slide-recipe-detail.jpg"
-                                                                rel="recipe-slider-1"
-                                                                className="swipebox"
-                                                            >
-                                                                <img src="images/temp-images/step1.jpg" alt="image" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="step-detail">
-                                                            <h3>Step 1.</h3>
-                                                            <p>
-                                                                Rinse the chicken pieces in cold water and pat dry.
-                                                                Place the chicken in a large, resealable zip-top bag
-                                                                and pour in the marinade. Toss the chicken inside the
-                                                                bag to cover evenly with the marinade and refrigerate
-                                                                for 12 hours or as long as overnight.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div className="step-single">
-                                                        <div className="step-image">
-                                                            <a
-                                                                href="images/temp-images/slide-recipe-detail.jpg"
-                                                                rel="recipe-slider-1"
-                                                                className="swipebox"
-                                                            >
-                                                                <img src="images/temp-images/step2.jpg" alt="image" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="step-detail">
-                                                            <h3>Step 2.</h3>
-                                                            <p>
-                                                                Rinse the chicken pieces in cold water and pat dry.
-                                                                Place the chicken in a large, resealable zip-top bag
-                                                                and pour in the marinade. Toss the chicken inside the
-                                                                bag to cover evenly with the marinade and refrigerate
-                                                                for 12 hours or as long as overnight.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div className="step-single">
-                                                        <div className="step-image">
-                                                            <a
-                                                                href="images/temp-images/slide-recipe-detail.jpg"
-                                                                rel="recipe-slider-1"
-                                                                className="swipebox"
-                                                            >
-                                                                <img src="images/temp-images/step3.jpg" alt="image" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="step-detail">
-                                                            <h3>Step 3.</h3>
-                                                            <p>
-                                                                Rinse the chicken pieces in cold water and pat dry.
-                                                                Place the chicken in a large, resealable zip-top bag
-                                                                and pour in the marinade. Toss the chicken inside the
-                                                                bag to cover evenly with the marinade and refrigerate
-                                                                for 12 hours or as long as overnight.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div className="step-single">
-                                                        <div className="step-image">
-                                                            <a
-                                                                href="images/temp-images/slide-recipe-detail.jpg"
-                                                                rel="recipe-slider-1"
-                                                                className="swipebox"
-                                                            >
-                                                                <img src="images/temp-images/step4.jpg" alt="image" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="step-detail">
-                                                            <h3>Step 4.</h3>
-                                                            <p>
-                                                                Rinse the chicken pieces in cold water and pat dry.
-                                                                Place the chicken in a large, resealable zip-top bag
-                                                                and pour in the marinade. Toss the chicken inside the
-                                                                bag to cover evenly with the marinade and refrigerate
-                                                                for 12 hours or as long as overnight.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div className="step-single">
-                                                        <div className="step-image">
-                                                            <a
-                                                                href="images/temp-images/slide-recipe-detail.jpg"
-                                                                rel="recipe-slider-1"
-                                                                className="swipebox"
-                                                            >
-                                                                <img src="images/temp-images/step5.jpg" alt="image" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="step-detail">
-                                                            <h3>Step 5.</h3>
-                                                            <p>
-                                                                Rinse the chicken pieces in cold water and pat dry.
-                                                                Place the chicken in a large, resealable zip-top bag
-                                                                and pour in the marinade. Toss the chicken inside the
-                                                                bag to cover evenly with the marinade and refrigerate
-                                                                for 12 hours or as long as overnight.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div className="tips-variations">
-                                            <h3>Tips &amp; variations</h3>
-                                            <ul>
-                                                <li>
-                                                    <p>
-                                                        Rinse the chicken pieces in cold water and pat dry. Place
-                                                        the chicken in a large, resealable zip-top bag and pour in
-                                                        the marinade. Toss the chicken inside the bag to cover.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <p>
-                                                        Rinse the chicken pieces in cold water and pat dry. Place
-                                                        the chicken in a large, resealable zip-top bag and pour in
-                                                        the marinade.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <p>
-                                                        Rinse the chicken pieces in cold water and pat dry. Place
-                                                        the chicken in a large, resealable zip-top bag and pour in
-                                                        the marinade. Toss the chicken inside the bag to cover.
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div className="separator-post" />
-                                        <div className="tags-icons">
-                                            <div className="row">
-                                                <div className="col-sm-7">
-                                                    <div className="details-tags">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="/">garlic</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/">pizza</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/">potato</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/">roasted</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+
+                                    </div>
+                                    <div className="about-chef">
+                                        <h3 className="lined">Author</h3>
+                                        <div className="listing">
+                                            <div className="image">
+                                                <div className="image-inner">
+                                                    <img src={recipe.userPhotoUrl} alt="chef" />
                                                 </div>
-                                                <div className="col-sm-5">
-                                                    <div className="details-social-icons">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="/">
-                                                                    <i className="fa fa-facebook" />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/">
-                                                                    <i className="fa fa-twitter" />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/">
-                                                                    <i className="fa fa-google-plus" />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/">
-                                                                    <i className="fa fa-pinterest" />
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/">
-                                                                    <i className="fa fa-plus" />
-                                                                </a>
-                                                            </li>
-                                                        </ul>
+                                            </div>
+                                            <div className="detail">
+                                                <div className="row">
+                                                    <div className="col-sm-8">
+                                                        <h4>
+                                                            <a href="/">{recipe.userDisplayName}</a>
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div className="recipe-comments">
                                         <h3 className="lined">Comments (2)</h3>
                                         <ul>
@@ -707,55 +126,7 @@ const RecipeDetails = () => {
                                                         Reply
                                                     </a>
                                                 </div>
-                                                <ul>
-                                                    <li>
-                                                        <div className="avatar">
-                                                            <a href="/">
-                                                                <img
-                                                                    src="images/temp-images/recipe-comment2.jpg"
-                                                                    alt="avatar"
-                                                                />
-                                                            </a>
-                                                        </div>
-                                                        <div className="comment">
-                                                            <h5>
-                                                                <a href="/">John Doe</a>
-                                                            </h5>
-                                                            <span className="time">(2hours ago)</span>
-                                                            <p>
-                                                                Rinse the chicken pieces in cold water and pat dry.
-                                                                Place the chicken
-                                                            </p>
-                                                            <a href="/" className="reply-button">
-                                                                Reply
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <div className="avatar">
-                                                    <a href="/">
-                                                        <img
-                                                            src="images/temp-images/recipe-comment1.jpg"
-                                                            alt="avatar"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="comment">
-                                                    <h5>
-                                                        <a href="/">John Doe</a>
-                                                    </h5>
-                                                    <span className="time">(2hours ago)</span>
-                                                    <p>
-                                                        Rinse the chicken pieces in cold water and pat dry. Place
-                                                        the chicken in a large, resealable zip-top bag and pour in
-                                                        the marinade.
-                                                    </p>
-                                                    <a href="/" className="reply-button">
-                                                        Reply
-                                                    </a>
-                                                </div>
+
                                             </li>
                                         </ul>
                                     </div>
@@ -1062,7 +433,7 @@ const RecipeDetails = () => {
                                             <li>1/4 cup = 62 ml = 4 Tablespoons</li>
                                             <li>1 Pinch = 1/8 Teaspoon</li>
                                         </ul>
-                                    </div>                              
+                                    </div>
                                 </div>
                             </aside>
                         </div>

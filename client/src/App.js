@@ -37,20 +37,24 @@ function App() {
 		<>	
 		<Header2/>
 			<Routes>
+
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/reset" element={<Reset />} />
+
 				<Route path="/submit-recipe" element={<SubmitRecipe />} />
 				<Route path="/recipe-listing" element={<RecipeListGrid />} />
 				<Route path="/recipe-listing-grid" element={<RecipeList />} />
-				<Route path="/contacts" element={<Contacts />} />
+				<Route path="/recipe-detail/:recipeId" element={<RecipeDetails />} />
+
 				<Route path="/blog" element={<Blog/>} />
-				<Route path="/recipe-detail" element={<RecipeDetails />} />
+				<Route path="/submit-to-blog" element={<SubmitToBlog/>}/>
 				<Route path="/blog-post-details/:blogPostId" element={<BlogPostDetails />} />
 				<Route path="/blog-post-edit/:blogPostId" element={<BlogPostEdit />} />
+
+				<Route path="/contacts" element={<Contacts />} />
 				<Route path="/profile" element={<Profile />} />
-				<Route path="/submit-to-blog" element={<SubmitToBlog/>}/>
 				<Route path="/admin-panel" element={<AdminPanel/>}/>
 			</Routes>
 		<Footer />

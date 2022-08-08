@@ -4,24 +4,22 @@ import { logInWithEmailAndPassword } from "../../firebase";
 const GridRecipe = (props) => {
 
     let data = props.props
-    console.log(data);
-
 
     return (
         <div className="listing">
             <div className="image">
-                <Link to="/recipe-detail">
+                <Link to={`/recipe-detail/${data.id}`}>
                     <img src={data.imageUrl} alt="image" />
                 </Link>
             </div>
             <div className="detail">
                 <h4>
-                    <Link to="/recipe-detail">{data.title}</Link>
+                    <Link to={`/recipe-detail/${data.id}`}>{data.title}</Link>
                 </h4>
                 <div className="meta-listing">
                     <ul className="post-meta">
                         <li className="author">
-                            <Link to="/">{data.userDisplayName}</Link>
+                            <Link to="">{data.userDisplayName}</Link>
                         </li>
                         <li className="calendar">{data.date}</li>
                     </ul>
