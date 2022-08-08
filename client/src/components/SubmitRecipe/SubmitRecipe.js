@@ -1,9 +1,10 @@
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import Select from 'react-select'
 import React, { useState, useEffect } from 'react';
 import { errorHandler } from "../../services/ErrorServices";
+import { CreateRecipe } from "../../services/RecipeServices";
 
 const options = [
 	{ value: 'breakfast', label: 'Breakfast' },
@@ -15,6 +16,9 @@ const options = [
 
 const SubmitRecipe = () => {
 
+	let date = new Date().toLocaleDateString("en-GB");
+
+	let navigate = useNavigate();
 	const [user] = useAuthState(auth);
 	const [formData, setFormData] = useState({
 		title: "",
@@ -39,6 +43,24 @@ const SubmitRecipe = () => {
 
 	function checkForErrors(e) {
 		errorHandler(e.target.name, e.target.value, setErrors)
+	}
+
+	function onClickHandler(){
+		CreateRecipe(
+			formData.title,
+			formData.description,
+			formData.contents,
+			formData.preparation,
+			formData.imageUrl,
+			formData.preparationTime,
+			formData.cookTime,
+			formData.dishType,
+			user.uid,
+			user.displayName,
+			user.photoURL,
+			date,
+			)
+		navigate("/recipe-listing")
 	}
 
 	if (!user) {
@@ -168,7 +190,13 @@ const SubmitRecipe = () => {
 											/>
 										</div>
 										<div className="text-center">
-											<button type="submit" className="recipe-submit-btn" disabled={Object.values(formData).some((x) => !x)}>
+											<button 
+												className="recipe-submit-btn" 
+												disabled={Object.values(formData).some((x) => !x)}
+												onClick={()=>onClickHandler()}
+																
+											>
+												
 												Submit Your Recipe
 											</button>
 										</div>
