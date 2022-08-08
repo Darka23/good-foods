@@ -1,28 +1,29 @@
 import { Link } from "react-router-dom";
+import { logInWithEmailAndPassword } from "../../firebase";
 
-const GridRecipe = () => {
+const GridRecipe = (props) => {
+
+    let data = props.props
+    console.log(data);
+
+
     return (
         <div className="listing">
             <div className="image">
                 <Link to="/recipe-detail">
-                    <img src="images/temp-images/listing-1.jpg" alt="image" />
+                    <img src={data.imageUrl} alt="image" />
                 </Link>
             </div>
             <div className="detail">
                 <h4>
-                    <Link to="/recipe-detail">pasto pizza with fillas cheez toppings</Link>
+                    <Link to="/recipe-detail">{data.title}</Link>
                 </h4>
-                <p>
-                    Nam ornare arcu turpis, nec congu Curabitur quis euismod.
-                    Nam ornare arcu turpis, nec congu Curabitur quis euismod.
-                    Nam ornare gsfg
-                </p>
                 <div className="meta-listing">
                     <ul className="post-meta">
                         <li className="author">
-                            <Link to="/">John Doe</Link>
+                            <Link to="/">{data.userDisplayName}</Link>
                         </li>
-                        <li className="calendar">23/10/2015</li>
+                        <li className="calendar">{data.date}</li>
                     </ul>
                     <div className="rating-box">
                         <span className="rating-icons">
@@ -170,8 +171,7 @@ const GridRecipe = () => {
                                 </g>
                             </svg>
                         </span>
-                        <span className="rating-figure">(4.1 / 5)</span>
-                    </div>{" "}
+                    </div>
                 </div>
             </div>
         </div>

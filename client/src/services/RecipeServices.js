@@ -41,7 +41,17 @@ export function CreateRecipe(
         date,
         comments:[],
     })
+}
 
+export function GetAllRecipes(){
 
+    return getDocs(recipeRef)
+		.then((snapshot) => {
+			let recipes = [];
+			snapshot.docs.forEach((doc) => {
+				recipes.push({ ...doc.data(), id: doc.id })
+			})
+			return recipes;
+		})
 }
 

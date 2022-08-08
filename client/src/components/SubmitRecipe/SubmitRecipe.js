@@ -193,8 +193,7 @@ const SubmitRecipe = () => {
 											<button 
 												className="recipe-submit-btn" 
 												disabled={Object.values(formData).some((x) => !x)}
-												onClick={()=>onClickHandler()}
-																
+												onClick={()=>onClickHandler()}							
 											>
 												
 												Submit Your Recipe
