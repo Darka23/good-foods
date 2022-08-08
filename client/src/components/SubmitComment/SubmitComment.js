@@ -19,16 +19,14 @@ const SubmitComment = (post) => {
 
 
     function submitCommentHandler() {
-        AddCommentToPost(name, email, subject, message, postId,user.photoURL)
+        AddCommentToPost(name, email, subject, message, postId,user.photoURL,user.uid)
             .then((data) => {
                 setName("");
                 setEmail("");
                 setSubject("");
                 setMessage("");
                 post.addCommentHandler(data)
-
-            }
-            )
+            })
     }
 
     return (

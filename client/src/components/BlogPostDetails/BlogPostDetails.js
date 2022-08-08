@@ -17,25 +17,27 @@ const BlogPostDetails = () => {
     const [comments, setComments] = useState([]);
     const [isLoading,setIsLoading] = useState(true);
 
+    const [user] = useAuthState(auth);
+    let currentUserIsAuthor;
 
+    if(user){
+        currentUserIsAuthor = user.uid == blogPost.userId;
+    }
+    
+    
     useEffect(() => {
         GetBlogPosts()
-            .then((data) => {
-                let desiredPost = data.find(x => x.id == blogPostId)
-                setBlogPost(desiredPost);
-                setComments(desiredPost.comments);
-                setIsLoading(false);
-            })
+        .then((data) => {
+            let desiredPost = data.find(x => x.id == blogPostId)
+            setBlogPost(desiredPost);
+            setComments(desiredPost.comments);
+            setIsLoading(false);
+        })
     }, [])
-
+    
     function AddComment(comment) {
         setComments((state) => [...state, comment])
-    }
-
-    
-    const [user] = useAuthState(auth);
-    
-    let currentUserIsAuthor = user.uid == blogPost.userId;
+    }   
     
     if(isLoading){
         return <Preloader/>
@@ -118,7 +120,7 @@ const BlogPostDetails = () => {
                                                 {comments.length
                                                     ?
                                                     comments.map((comment) => {
-                                                        return <Comment key={comment.id} comment={comment} />
+                                                        return <Comment key={comment.id} comment={{comment,blogPostId:blogPost.id}}/>
                                                     })
                                                     :
                                                     <h1>No comments...</h1>
@@ -126,7 +128,7 @@ const BlogPostDetails = () => {
 
                                             </ul>
                                             <div className="separator-post" />
-                                            <SubmitComment postId={blogPostId} addCommentHandler={AddComment} />
+                                            <SubmitComment postId={blogPostId} addCommentHandler={AddComment}/>
                                         </div>
                                     </div>
                                 </div>

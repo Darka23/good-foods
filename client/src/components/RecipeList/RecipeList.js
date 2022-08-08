@@ -7,7 +7,7 @@ const RecipeList = () => {
 		<>
 
 			{/*banner*/}
-			<div className="banner banner-blog">
+			<div className="banner">
 				<div className="container ">
 					<div className="main-heading">
 						<h1>Recipe listing page</h1>
@@ -16,7 +16,6 @@ const RecipeList = () => {
 			</div>
 			{/*banner ends*/}
 
-			<AdvanceSearchForm/>
 
 			<div className="recipes-home-body inner-page">
 				<div className="container">

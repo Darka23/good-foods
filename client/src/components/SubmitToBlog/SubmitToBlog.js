@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, } from "../../firebase";
 import { GetBlogPosts, CreateBlogPost } from "../../services/BlogServices";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+
 
 
 const SubmitToBlog = () => {
@@ -15,6 +16,9 @@ const SubmitToBlog = () => {
 
     let date = new Date().toLocaleDateString("en-GB");
 
+    if(!user){
+        return <Navigate to="/login"/>
+    }
 
     return (
         <>

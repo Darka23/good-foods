@@ -17,7 +17,6 @@ const RecipeListGrid = () => {
 			</div>			
 			{/*banner ends*/}
 
-			<AdvanceSearchForm/>
 			<div className="recipes-home-body inner-page">
 				<div className="container">
 					<div className="row">
@@ -799,137 +798,7 @@ const RecipeListGrid = () => {
 											{/*</div>*/}
 										</div>
 									</div>
-									{/*recipes search widget ends*/}
-									{/*popular recipes widget*/}
-									<div className="widget latest-news-widget">
-										<h2>popular recipes</h2>
-										<ul>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-										</ul>
-									</div>
-									{/*popular recipes widget ends*/}
-									<div className="widget">
-										<a href="/">
-											<img src="images/temp-images/add-side.jpg" alt="Add" />
-										</a>
-									</div>
-									{/*latest news widget*/}
-									<div className="widget latest-news-widget">
-										<h2>Latest News</h2>
-										<ul>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-										</ul>
-									</div>
+																
 								</div>
 							</aside>
 						</div>

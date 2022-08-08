@@ -1,7 +1,50 @@
-import AdvanceSearchForm from "../AdvanceSearchForm/AdvanceSearchForm";
-import Header2 from "../Header/Header2";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Navigate } from "react-router-dom";
+import { auth } from "../../firebase";
+import Select from 'react-select'
+import React, { useState, useEffect } from 'react';
+import { errorHandler } from "../../services/ErrorServices";
+
+const options = [
+	{ value: 'breakfast', label: 'Breakfast' },
+	{ value: 'starter', label: 'Starter' },
+	{ value: 'lunch', label: 'Lunch' },
+	{ value: 'dinner', label: 'Dinner' },
+	{ value: 'dessert', label: 'Dessert' }
+]
 
 const SubmitRecipe = () => {
+
+	const [user] = useAuthState(auth);
+	const [formData, setFormData] = useState({
+		title: "",
+		description: "",
+		contents: "",
+		preparation: "",
+		imageUrl: "",
+		preparationTime: "",
+		cookTime: "",
+		dishType: "",
+	});
+	const [errors, setErrors] = useState([]);
+
+
+	function formDataHandler(e) {
+		setFormData(state => ({ ...state, [e.target.name]: e.target.value }))
+	}
+
+	function selectChangeHandler(selectedOption) {
+		setFormData(state => ({ ...state, dishType: selectedOption.label }))
+	}
+
+	function checkForErrors(e) {
+		errorHandler(e.target.name, e.target.value, setErrors)
+	}
+
+	if (!user) {
+		return <Navigate to="/login" replace />
+	}
+
 	return (
 		<>
 			<div className="banner banner-blog">
@@ -12,224 +55,124 @@ const SubmitRecipe = () => {
 				</div>
 			</div>
 
-			<AdvanceSearchForm/>
-			
+
+
 			<div className="recipes-home-body inner-page">
 				<div className="container">
 					<div className="row">
 						<div className="col-md-8 col-lg-9">
 							<div className="recipe-set submit-recipe-set">
 								<h2>Submit Recipe</h2>
-								<p>
-									Food Recipe theme include a Recipe Submit Template. It allow users
-									to submit a recipe with featured image and related details. A user
-									should be logged in to submit a recipe.{" "}
-								</p>
 								<div className="submit-recipe-form">
-									<form action="#" method="post">
+									<div>
 										<label htmlFor="title">Recipe Title</label>
-										<input type="text" name="title" id="title" />
+										<input
+											type="text"
+											name="title"
+											id="title"
+											value={formData.title}
+											onChange={formDataHandler}
+											onBlur={checkForErrors}
+										/>
+										{
+											errors.some(error => error.field == "title") ?
+												<p className="errorMessage">{errors.find(error => error.field == "title").errorMessage}</p>
+												: <></>
+										}
 										<br />
-										<label htmlFor="short-description">Short Description</label>
+										<label htmlFor="description">Short Description</label>
 										<textarea
 											className="short-text"
-											name="short-des"
-											id="short-description"
+											name="description"
+											id="description"
 											cols={30}
 											rows={10}
-											defaultValue={""}
+											value={formData.description}
+											onChange={formDataHandler}
+											onBlur={checkForErrors}
 										/>
-										<label htmlFor="recipe-content">Recipe Contents</label>
+										{
+											errors.some(error => error.field == "description") ?
+												<p className="errorMessage">{errors.find(error => error.field == "description").errorMessage}</p>
+												: <></>
+										}
+										<label htmlFor="contents">Recipe Contents</label>
 										<textarea
-											name="content"
-											id="recipe-content"
+											name="contents"
+											id="contents"
 											cols={30}
 											rows={10}
-											defaultValue={""}
+											value={formData.contents}
+											onChange={formDataHandler}
+											onBlur={checkForErrors}
 										/>
-										<label htmlFor="upload-image">Upload Images</label>
-										<input type="file" name="fileUpload" id="upload-image" />
-										<fieldset className="ingredient-set">
-											<label htmlFor="ingredients">Ingredients</label>
-											<ul className="list-sortable ingredients-list">
-												<li>
-													<div className="add-fields">
-														<span className="handler-list">
-															<i className="fa fa-arrows" />
-														</span>
-														<input
-															type="text"
-															name="ingredients[]"
-															id="ingredients"
-														/>
-														<span className="del-list">
-															<i className="fa fa-trash" />
-														</span>
-													</div>
-												</li>
-											</ul>
-											<span className="add-button add-ing">
-												<i className="fa fa-plus" />
-											</span>
-										</fieldset>
-										<fieldset className="ingredient-set">
-											<label htmlFor="steps">Steps</label>
-											<ul className="list-sortable steps">
-												<li>
-													<div className="add-fields">
-														<span className="handler-list">
-															<i className="fa fa-arrows" />
-														</span>
-														<textarea
-															className="short-text"
-															name="steps"
-															id="steps"
-															cols={30}
-															rows={10}
-															defaultValue={"    "}
-														/>
-														<span className="del-list">
-															<i className="fa fa-trash" />
-														</span>
-													</div>
-												</li>
-											</ul>
-											<span className="add-button add-steps">
-												<i className="fa fa-plus" />
-											</span>
-										</fieldset>
-										<label className="video-based-recipe">Video Based Recipe</label>
+										{
+											errors.some(error => error.field == "contents") ?
+												<p className="errorMessage">{errors.find(error => error.field == "contents").errorMessage}</p>
+												: <></>
+										}
+										<label htmlFor="preparation">Method of preparation</label>
+										<textarea
+											name="preparation"
+											id="preparation"
+											cols={30}
+											rows={10}
+											value={formData.preparation}
+											onChange={formDataHandler}
+											onBlur={checkForErrors}
+										/>
+										{
+											errors.some(error => error.field == "preparation") ?
+												<p className="errorMessage">{errors.find(error => error.field == "preparation").errorMessage}</p>
+												: <></>
+										}
+										<label htmlFor="imageUrl">ImageUrl</label>
+										<input
+											type="url"
+											name="imageUrl"
+											id="imageUrl"
+											value={formData.imageUrl}
+											onChange={formDataHandler}
+										/>
+
 										<br />
-										<label htmlFor="radio-yes">
-											<input
-												className="radio-btn"
-												id="radio-yes"
-												type="radio"
-												name="video-recipe"
-												defaultValue="yes"
-												defaultChecked=""
+
+										<div className="row">
+											<div className="col-sm-4">
+												<label htmlFor="preparationTime">Preparation Time</label>
+												<input
+													type="text"
+													name="preparationTime"
+													id="preparationTime"
+													value={formData.preparationTime}
+													onChange={formDataHandler}
+												/>
+											</div>
+											<div className="col-sm-4">
+												<label htmlFor="cookTime">Cook Time</label>
+												<input
+													type="text"
+													name="cookTime"
+													id="cookTime"
+													value={formData.cookTime}
+													onChange={formDataHandler}
+												/>
+											</div>
+										</div>
+
+										<label htmlFor="dishType">Dish Type</label>
+										<div className="form-field">
+											<Select
+												options={options}
+												onChange={selectChangeHandler}
 											/>
-											<span className="radio-text">yes</span>
-										</label>
-										<label htmlFor="radio-no">
-											<input
-												className="radio-btn"
-												id="radio-no"
-												type="radio"
-												name="video-recipe"
-												defaultValue="no"
-											/>{" "}
-											<span className="radio-text">no</span>
-										</label>
-										<br />
-										<br />
-										<label htmlFor="video-embed">Video Embed Code</label>
-										<textarea
-											className="short-text"
-											name="embed-code"
-											id="video-embed"
-											cols={30}
-											rows={10}
-											defaultValue={""}
-										/>
-										<div className="row">
-											<div className="col-sm-6">
-												<label htmlFor="yield">Yield</label>
-												<input type="text" name="yield" id="yield" />
-											</div>
-											<div className="col-sm-6">
-												<label htmlFor="servings">Servings</label>
-												<input type="text" name="servings" id="servings" />
-											</div>
-										</div>
-										<div className="row">
-											<div className="col-sm-4">
-												<label htmlFor="prep-time">Preparation Time</label>
-												<input type="text" name="prep-time" id="prep-time" />
-											</div>
-											<div className="col-sm-4">
-												<label htmlFor="cook-time">Cook Time</label>
-												<input type="text" name="cook-time" id="cook-time" />
-											</div>
-											<div className="col-sm-4">
-												<label htmlFor="ready-in">Ready In</label>
-												<input type="text" name="ready-in" id="ready-in" />
-											</div>
-										</div>
-										<label htmlFor="tags">Tags</label>
-										<input type="text" name="tags" id="tags" />
-										<div className="row">
-											<div className="col-sm-6">
-												<label htmlFor="recipe-type">Recipe Type</label>
-												<select
-													name="recipe-type"
-													id="recipe-type"
-													className="advance-selectable"
-												>
-													<option defaultValue="t0">
-														None
-													</option>
-													<option defaultValue="t1">type 1</option>
-													<option defaultValue="t2">type 2</option>
-													<option defaultValue="t3">type 3</option>
-													<option defaultValue="t4">type 4</option>
-												</select>
-											</div>
-											<div className="col-sm-6">
-												<label htmlFor="cuisine-select">Cuisine</label>
-												<select
-													name="cuisine"
-													id="cuisine-select"
-													className="advance-selectable"
-												>
-													<option defaultValue="c0" >
-														None
-													</option>
-													<option defaultValue="c1">type 1</option>
-													<option defaultValue="c2">type 2</option>
-													<option defaultValue="c3">type 3</option>
-													<option defaultValue="c4">type 4</option>
-												</select>
-											</div>
-											<div className="col-sm-6">
-												<label htmlFor="course-select">Course</label>
-												<select
-													name="course"
-													id="course-select"
-													className="advance-selectable"
-												>
-													<option defaultValue="cr0">
-														None
-													</option>
-													<option defaultValue="cr1">type 1</option>
-													<option defaultValue="cr2">type 2</option>
-													<option defaultValue="cr3">type 3</option>
-													<option defaultValue="cr4">type 4</option>
-												</select>
-											</div>
-											<div className="col-sm-6">
-												<label htmlFor="skill">Skill Level</label>
-												<select
-													name="skill"
-													id="skill"
-													className="advance-selectable"
-												>
-													<option defaultValue="s0">
-														None
-													</option>
-													<option defaultValue="s1">type 1</option>
-													<option defaultValue="s2">type 2</option>
-													<option defaultValue="s3">type 3</option>
-													<option defaultValue="s4">type 4</option>
-												</select>
-											</div>
 										</div>
 										<div className="text-center">
-											<button type="submit" className="recipe-submit-btn">
+											<button type="submit" className="recipe-submit-btn" disabled={Object.values(formData).some((x) => !x)}>
 												Submit Your Recipe
 											</button>
 										</div>
-									</form>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -238,16 +181,6 @@ const SubmitRecipe = () => {
 								<div className="side-bar">
 									{/*recipes search widget*/}
 									<div className="widget recipe-search">
-										<div className="search-bar-widget">
-											<form action="#">
-												<div className="search-field">
-													<input type="search" name="search" placeholder="Search" />
-													<button type="submit">
-														<i className="fa fa-search" />
-													</button>
-												</div>
-											</form>
-										</div>
 										<div className="category-list">
 											{/*<div class="list-inner">*/}
 											<ul>
@@ -448,138 +381,7 @@ const SubmitRecipe = () => {
 											{/*</div>*/}
 										</div>
 									</div>
-									{/*recipes search widget ends*/}
-									{/*popular recipes widget*/}
-									<div className="widget latest-news-widget">
-										<h2>popular recipes</h2>
-										<ul>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-										</ul>
-									</div>
-									{/*popular recipes widget ends*/}
-									<div className="widget">
-										<a href="/">
-											<img src="images/temp-images/add-side.jpg" alt="Add" />
-										</a>
-									</div>
-									{/*latest news widget*/}
-									<div className="widget latest-news-widget">
-										<h2>Latest News</h2>
-										<ul>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-											<li>
-												<div className="thumb">
-													<a href="/">
-														<img
-															src="images/temp-images/widget-thumbnail.jpg"
-															alt="thumbnail"
-														/>
-													</a>
-												</div>
-												<div className="detail">
-													<a href="/">Pimento Cheese Potato Skins</a>
-													<span className="post-date">March 21,2015</span>
-												</div>
-											</li>
-										</ul>
-									</div>
-									{/*latest news widget ends*/}
+
 								</div>
 							</aside>
 						</div>

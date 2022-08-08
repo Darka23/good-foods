@@ -26,12 +26,12 @@ import SubmitToBlog from './components/SubmitToBlog/SubmitToBlog';
 import BlogPost from './components/BlogPost/BlogPost';
 import Header2 from './components/Header/Header2';
 import BlogPostEdit from './components/BlogPostEdit/BlogPostEdit';
+import AdminPanel from './components/AdminPanel/AdminPanel';
 
 
 function App() {
 	
 	const [user] = useAuthState(auth);
-
 
 	return (
 		<>	
@@ -51,9 +51,9 @@ function App() {
 				<Route path="/blog-post-edit/:blogPostId" element={<BlogPostEdit />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/submit-to-blog" element={<SubmitToBlog/>}/>
+				<Route path="/admin-panel" element={<AdminPanel/>}/>
 			</Routes>
-
-			<Footer />
+		<Footer />
 		</>
 	);
 }

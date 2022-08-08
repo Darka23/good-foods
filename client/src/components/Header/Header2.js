@@ -4,16 +4,24 @@ import { auth } from "../../firebase";
 import LoginRegister from "../AuthButtons/LoginRegister";
 import LogOut from "../AuthButtons/LogOut"
 import { useEffect, useState } from "react";
+import Preloader from "../Preloader";
 
 const Header2 = () => {
 
 	const[isLoading, setIsLoading] = useState(true);
-
-	useEffect(()=>{
-		
-	})
-
 	const [user] = useAuthState(auth);
+
+	
+	useEffect(()=>{
+		setTimeout(()=>{
+			setIsLoading(false);
+		},750)
+	},[]);
+	
+
+	if(isLoading){
+		return <Preloader/>
+	}
 
 	return (
 		<>

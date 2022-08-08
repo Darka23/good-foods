@@ -5,13 +5,15 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 import RecipeListGrid from "../RecipeList/RecipeListGrid";
 import Preloader from "../Preloader";
+import { Navigate } from "react-router-dom";
+
 
 const Profile = () => {
 
     const [user] = useAuthState(auth);	
 
-    while(!user){
-        return <Preloader/>
+    if(!user){
+        return <Navigate to="/login" replace/>
     }
 
     return (
