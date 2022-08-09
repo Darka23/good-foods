@@ -5752,6 +5752,10 @@ div.widget-measurements .default-btn {
   background-color: lightslategray;
 }
 
+#recipe-comment:disabled{
+  cursor: not-allowed;
+  background-color: lightslategray;
+}
 
 .submit-recipe-form .recipe-submit-btn:hover {
   background: #000000;

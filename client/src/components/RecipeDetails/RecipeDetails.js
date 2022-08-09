@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 import Preloader from '../Preloader';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
+import RecipeComment from '../RecipeComment/RecipeComment';
+import SubmitCommentRecipe from '../SubmitCommentRecipe/SubmitCommentRecipe';
 
 
 
@@ -15,6 +17,7 @@ const RecipeDetails = () => {
     const [recipe, setRecipe] = useState({});
 
     const [isLoading, setIsLoading] = useState(true);
+    const [comments, setComments] = useState([]);
 
     const [user] = useAuthState(auth);
     let currentUserIsAuthor;
@@ -32,6 +35,10 @@ const RecipeDetails = () => {
                 setIsLoading(false);
             })
     }, [])
+
+    function AddComment(comment) {
+        setComments((state) => [...state, comment])
+    }
 
     if (isLoading) {
         return <Preloader />
@@ -82,17 +89,17 @@ const RecipeDetails = () => {
                                         {currentUserIsAuthor
                                             ?
                                             <>
-                                                <Link 
-                                                    to="/recipe-listing" 
+                                                <Link
+                                                    to="/recipe-listing"
                                                     className="default-btn mid-button theme-tag-color"
-                                                    onClick={()=>DeleteRecipe(recipe.id)}>Delete Recipe
+                                                    onClick={() => DeleteRecipe(recipe.id)}>Delete Recipe
                                                 </Link>
                                                 <Link
                                                     to={`/recipe-edit/${recipe.id}`}
                                                     className="default-btn mid-button light-color">Edit Recipe
                                                 </Link>
                                             </>
-                                            :<></>
+                                            : <></>
                                         }
 
                                     </div>
@@ -116,88 +123,52 @@ const RecipeDetails = () => {
                                         </div>
                                     </div>
 
-                                    <div className="recipe-comments">
-                                        <h3 className="lined">Comments {recipe?.comments?.length}</h3>
-                                        <ul>
-                                            <li>
-                                                <div className="avatar">
-                                                    <a href="/">
-                                                        <img
-                                                            src="images/temp-images/recipe-comment1.jpg"
-                                                            alt="avatar"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="comment">
-                                                    <h5>
-                                                        <a href="/">John Doe</a>
-                                                    </h5>
-                                                    <span className="time">(2hours ago)</span>
-                                                    <p>
-                                                        Rinse the chicken pieces in cold water and pat dry. Place
-                                                        the chicken in a large, resealable zip-top bag and pour in
-                                                        the marinade.
-                                                    </p>
-                                                    <a href="/" className="reply-button">
-                                                        Reply
-                                                    </a>
-                                                </div>
+                                    <h3 className="lined">Comments {recipe.comments?.length}</h3>
 
-                                            </li>
+                                    <div className="comments-list">
+                                        <ul>
+                                            {comments.length
+                                                ?
+                                                comments.map((comment) => {
+                                                    return <RecipeComment key={comment.id} comment={{ comment, recipeId: recipe.id }} />
+                                                })
+                                                :
+                                                <h1>No comments...</h1>
+                                            }
                                         </ul>
                                     </div>
-                                    <div className="comment-form">
-                                        <h3 className="lined">Leave Comment</h3>
-                                        <form action="#" method="post">
-                                            <div className="row">
-                                                <div className="col-md-6">
-                                                    <input type="text" name="name" placeholder="Name" />
-                                                </div>
-                                                <div className="col-md-6">
-                                                    <input type="email" name="email" placeholder="Email" />
-                                                </div>
-                                            </div>
-                                            <textarea
-                                                name="comment"
-                                                id="comment"
-                                                cols={30}
-                                                rows={10}
-                                                placeholder="Message"
-                                                defaultValue={""}
-                                            />
-                                            <button className="submit-comment">Submit</button>
-                                        </form>
+
+                                            <SubmitCommentRecipe recipeId={recipe.id} addCommentHandler={AddComment} />
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-md-4 col-lg-3">
-                            <aside>
-                                <div className="side-bar">
-                                    {/*recipes search widget*/}
-                                    <div className="widget recipe-search">
-                                        <div className="category-list">
-                                            {/*<div class="list-inner">*/}
-                                            <ul>
-                                                <li>
-                                                    <a href="/">breakfast</a>
-                                                    <div className="list-icons">
-                                                        <svg
-                                                            version="1.1"
-                                                            className="icon-container"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlnsXlink="http://www.w3.org/1999/xlink"
-                                                            x="0px"
-                                                            y="0px"
-                                                            width="42px"
-                                                            height="42px"
-                                                            viewBox="0 0 42 42"
-                                                            enableBackground="new 0 0 42 42"
-                                                            xmlSpace="preserve"
-                                                        >
-                                                            <path
-                                                                className="icon-svg"
-                                                                d="M38.001,22.42v11.577c0,1.653-1.349,3-3.001,3h-8H7c-1.654,0-2.999-1.347-2.999-3V22.42C2.036,20.542,1,18.331,1,16.001
+                            <div className="col-md-4 col-lg-3">
+                                <aside>
+                                    <div className="side-bar">
+                                        {/*recipes search widget*/}
+                                        <div className="widget recipe-search">
+                                            <div className="category-list">
+                                                {/*<div class="list-inner">*/}
+                                                <ul>
+                                                    <li>
+                                                        <a href="/">breakfast</a>
+                                                        <div className="list-icons">
+                                                            <svg
+                                                                version="1.1"
+                                                                className="icon-container"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                xmlnsXlink="http://www.w3.org/1999/xlink"
+                                                                x="0px"
+                                                                y="0px"
+                                                                width="42px"
+                                                                height="42px"
+                                                                viewBox="0 0 42 42"
+                                                                enableBackground="new 0 0 42 42"
+                                                                xmlSpace="preserve"
+                                                            >
+                                                                <path
+                                                                    className="icon-svg"
+                                                                    d="M38.001,22.42v11.577c0,1.653-1.349,3-3.001,3h-8H7c-1.654,0-2.999-1.347-2.999-3V22.42C2.036,20.542,1,18.331,1,16.001
       C1,9.937,8.177,5.003,17,5.003h8c8.823,0,16,4.934,16,10.998C41,18.331,39.964,20.541,38.001,22.42L38.001,22.42z M17,7.003
       c-7.719,0-14,4.036-14,8.998c0,1.873,0.921,3.684,2.665,5.234C5.877,21.426,6,21.695,6,21.982v12.015c0,0.552,0.449,1.001,1,1.001
       h20c0.552,0,1.001-0.449,1.001-1.001V21.982c0-0.287,0.12-0.558,0.334-0.748C30.079,19.683,31,17.873,31,16.001
@@ -208,29 +179,29 @@ const RecipeDetails = () => {
       C22,15.329,21.328,16.001,20.5,16.001L20.5,16.001z M21,25.499C21,26.328,20.328,27,19.5,27c-0.829,0-1.5-0.672-1.5-1.501
       C18,24.671,18.671,24,19.5,24C20.328,24,21,24.671,21,25.499L21,25.499z M11.5,21.001c-0.829,0-1.5-0.672-1.5-1.501
       c0-0.828,0.672-1.499,1.5-1.499S13,18.672,13,19.5C13,20.329,12.329,21.001,11.5,21.001L11.5,21.001z"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Starter</a>
-                                                    <div className="list-icons">
-                                                        <svg
-                                                            version="1.1"
-                                                            className="icon-container"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlnsXlink="http://www.w3.org/1999/xlink"
-                                                            x="0px"
-                                                            y="0px"
-                                                            width="42px"
-                                                            height="48px"
-                                                            viewBox="0 0 42 48"
-                                                            enableBackground="new 0 0 42 48"
-                                                            xmlSpace="preserve"
-                                                        >
-                                                            <path
-                                                                className="icon-svg"
-                                                                d="M34,22.997c0-2.757-2.244-5-5.001-5c-1.641,0-3.088,0.805-3.999,2.031c-0.912-1.226-2.358-2.031-4-2.031
+                                                                />
+                                                            </svg>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/">Starter</a>
+                                                        <div className="list-icons">
+                                                            <svg
+                                                                version="1.1"
+                                                                className="icon-container"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                xmlnsXlink="http://www.w3.org/1999/xlink"
+                                                                x="0px"
+                                                                y="0px"
+                                                                width="42px"
+                                                                height="48px"
+                                                                viewBox="0 0 42 48"
+                                                                enableBackground="new 0 0 42 48"
+                                                                xmlSpace="preserve"
+                                                            >
+                                                                <path
+                                                                    className="icon-svg"
+                                                                    d="M34,22.997c0-2.757-2.244-5-5.001-5c-1.641,0-3.088,0.805-3.999,2.031c-0.912-1.226-2.358-2.031-4-2.031
       c-1.641,0-3.088,0.805-4,2.031c-0.912-1.226-2.358-2.031-4-2.031c-2.757,0-5.001,2.242-5.001,5c0,2.568,1.957,4.667,4.454,4.942
       c-0.286,0.629-0.455,1.321-0.455,2.056c0,2.569,1.957,4.667,4.454,4.943C16.169,35.567,16,36.26,16,36.994
       c0,2.756,2.242,4.998,5,4.998c2.757,0,5-2.242,5-4.998c0-0.734-0.169-1.427-0.453-2.056c2.497-0.276,4.454-2.374,4.454-4.943
@@ -244,40 +215,40 @@ const RecipeDetails = () => {
       c0,0.552,0.448,1,1,1s1-0.448,1-1c0-1.355-0.393-2.616-1.062-3.689C20.971,11.21,21,11.108,21,10.998c0-1.654,1.346-3,3-3
       c0.553,0,1-0.447,1-1C25,6.447,24.553,6,24,6c-2.218,0-4.08,1.46-4.732,3.462C18.084,8.548,16.606,7.999,15,7.999
       c-0.553,0-1,0.448-1,1C14,9.552,14.447,9.998,15,9.998z"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <a href="/">lunch</a>
-                                                    <div className="list-icons">
-                                                        <svg
-                                                            version="1.1"
-                                                            className="icon-container"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlnsXlink="http://www.w3.org/1999/xlink"
-                                                            x="0px"
-                                                            y="0px"
-                                                            width="42px"
-                                                            height="48px"
-                                                            viewBox="0 0 42 48"
-                                                            enableBackground="new 0 0 42 48"
-                                                            xmlSpace="preserve"
-                                                        >
-                                                            <g>
-                                                                <path
-                                                                    className="icon-svg"
-                                                                    d="M24.576,22.897c0.138,0.065,0.282,0.094,0.423,0.094c0.377,0,0.737-0.213,0.908-0.577l7-14.998
+                                                                />
+                                                            </svg>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/">lunch</a>
+                                                        <div className="list-icons">
+                                                            <svg
+                                                                version="1.1"
+                                                                className="icon-container"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                xmlnsXlink="http://www.w3.org/1999/xlink"
+                                                                x="0px"
+                                                                y="0px"
+                                                                width="42px"
+                                                                height="48px"
+                                                                viewBox="0 0 42 48"
+                                                                enableBackground="new 0 0 42 48"
+                                                                xmlSpace="preserve"
+                                                            >
+                                                                <g>
+                                                                    <path
+                                                                        className="icon-svg"
+                                                                        d="M24.576,22.897c0.138,0.065,0.282,0.094,0.423,0.094c0.377,0,0.737-0.213,0.908-0.577l7-14.998
           c0.231-0.5,0.017-1.095-0.484-1.329c-0.5-0.233-1.096-0.015-1.329,0.484l-7,14.997C23.86,22.069,24.077,22.665,24.576,22.897z"
-                                                                />
-                                                                <path
-                                                                    className="icon-svg"
-                                                                    d="M20.578,22.897c0.136,0.065,0.28,0.094,0.421,0.094c0.377,0,0.738-0.213,0.908-0.577l7-14.998
+                                                                    />
+                                                                    <path
+                                                                        className="icon-svg"
+                                                                        d="M20.578,22.897c0.136,0.065,0.28,0.094,0.421,0.094c0.377,0,0.738-0.213,0.908-0.577l7-14.998
           c0.234-0.5,0.018-1.095-0.484-1.329c-0.498-0.233-1.093-0.015-1.328,0.484l-7,14.997C19.86,22.069,20.077,22.665,20.578,22.897z"
-                                                                />
-                                                                <path
-                                                                    className="icon-svg"
-                                                                    d="M36.758,18.129c-0.078-0.03-0.156-0.028-0.235-0.036c-0.795-1.986-2.537-3.527-4.727-3.971
+                                                                    />
+                                                                    <path
+                                                                        className="icon-svg"
+                                                                        d="M36.758,18.129c-0.078-0.03-0.156-0.028-0.235-0.036c-0.795-1.986-2.537-3.527-4.727-3.971
           c-0.541-0.113-1.068,0.24-1.179,0.781c-0.109,0.542,0.24,1.069,0.781,1.179C33.485,16.505,35,18.36,35,20.491
           c0,0.553,0.447,1,0.999,1c0.554,0,1.001-0.447,1.001-1c0-0.037-0.009-0.072-0.011-0.109c1.555,0.697,2.012,1.319,2.012,1.61
           c0,1.356-6.354,3.999-18.001,3.999c-11.647,0-18-2.643-18-3.999c0-0.299,0.49-0.945,2.108-1.654C5.039,20.713,5,21.1,5,21.491
@@ -288,30 +259,30 @@ const RecipeDetails = () => {
           c-1.643,0.352-3.037,1.346-3.965,2.68c-3.431,1.07-5.183,2.472-5.183,4.174c0,11.025,8.973,19.996,20.001,19.996
           s20.001-8.971,20.001-19.996C41.001,20.454,39.573,19.155,36.758,18.129z M21,39.988c-8.926,0-16.334-6.536-17.741-15.069
           c3.524,2.025,10.662,3.07,17.741,3.07s14.217-1.045,17.74-3.07C37.334,33.452,29.926,39.988,21,39.988z"
-                                                                />
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <a href="/">dinner</a>
-                                                    <div className="list-icons">
-                                                        <svg
-                                                            version="1.1"
-                                                            className="icon-container"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlnsXlink="http://www.w3.org/1999/xlink"
-                                                            x="0px"
-                                                            y="0px"
-                                                            width="42px"
-                                                            height="48px"
-                                                            viewBox="0 0 42 48"
-                                                            enableBackground="new 0 0 42 48"
-                                                            xmlSpace="preserve"
-                                                        >
-                                                            <path
-                                                                className="icon-svg"
-                                                                d="M41.861,32.705c-0.311,0.756-1.041,1.245-1.86,1.245h-5.646c-0.563,0-1.021,0.452-1.021,1.008v2.512
+                                                                    />
+                                                                </g>
+                                                            </svg>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/">dinner</a>
+                                                        <div className="list-icons">
+                                                            <svg
+                                                                version="1.1"
+                                                                className="icon-container"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                xmlnsXlink="http://www.w3.org/1999/xlink"
+                                                                x="0px"
+                                                                y="0px"
+                                                                width="42px"
+                                                                height="48px"
+                                                                viewBox="0 0 42 48"
+                                                                enableBackground="new 0 0 42 48"
+                                                                xmlSpace="preserve"
+                                                            >
+                                                                <path
+                                                                    className="icon-svg"
+                                                                    d="M41.861,32.705c-0.311,0.756-1.041,1.245-1.86,1.245h-5.646c-0.563,0-1.021,0.452-1.021,1.008v2.512
       c0,1.938-1.582,3.514-3.528,3.514c-0.286,0-0.575-0.034-0.86-0.102c-1.596-0.383-2.755-1.867-2.755-3.531v-2.895
       c0-0.252-0.134-0.506-0.429-0.506c-0.285,0-0.518,0.228-0.518,0.506v1.423c0,1.352-0.847,2.563-2.062,2.945
       c-0.67,0.212-1.378,0.189-1.981-0.027v3.196c0,0.805-0.315,1.562-0.888,2.131c-0.57,0.567-1.328,0.88-2.135,0.88
@@ -327,137 +298,75 @@ const RecipeDetails = () => {
        M24.51,28.005c-1.381,0-2.501-1.122-2.501-2.505c0-1.382,1.12-2.504,2.501-2.504s2.5,1.123,2.5,2.504
       C27.01,26.883,25.891,28.005,24.51,28.005L24.51,28.005z M16.007,17.99c-1.105,0-2-0.89-2-1.988c0-1.097,0.895-1.987,2-1.987
       c1.105,0,2.001,0.89,2.001,1.987C18.009,17.1,17.112,17.99,16.007,17.99L16.007,17.99z"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <a href="/">dessert</a>
-                                                    <div className="list-icons">
-                                                        <svg
-                                                            version="1.1"
-                                                            className="icon-container"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlnsXlink="http://www.w3.org/1999/xlink"
-                                                            x="0px"
-                                                            y="0px"
-                                                            width="42px"
-                                                            height="48px"
-                                                            viewBox="0 0 42 48"
-                                                            enableBackground="new 0 0 42 48"
-                                                            xmlSpace="preserve"
-                                                        >
-                                                            <path
-                                                                className="icon-svg"
-                                                                d="M36.793,25.391C36.603,25.146,36.311,25,36,25H6c-0.311,0-0.603,0.146-0.793,0.391c-0.19,0.246-0.253,0.567-0.173,0.867
+                                                                />
+                                                            </svg>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/">dessert</a>
+                                                        <div className="list-icons">
+                                                            <svg
+                                                                version="1.1"
+                                                                className="icon-container"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                xmlnsXlink="http://www.w3.org/1999/xlink"
+                                                                x="0px"
+                                                                y="0px"
+                                                                width="42px"
+                                                                height="48px"
+                                                                viewBox="0 0 42 48"
+                                                                enableBackground="new 0 0 42 48"
+                                                                xmlSpace="preserve"
+                                                            >
+                                                                <path
+                                                                    className="icon-svg"
+                                                                    d="M36.793,25.391C36.603,25.146,36.311,25,36,25H6c-0.311,0-0.603,0.146-0.793,0.391c-0.19,0.246-0.253,0.567-0.173,0.867
       l3.208,12.031C8.825,40.473,10.811,42,13.073,42h15.854c2.263,0,4.248-1.527,4.831-3.711l3.208-12.031
       C37.047,25.958,36.983,25.637,36.793,25.391z M31.826,37.773C31.477,39.085,30.283,40,28.927,40H13.073
       c-1.357,0-2.55-0.915-2.899-2.227L7.301,27h27.398L31.826,37.773z"
-                                                            />
-                                                            <path
-                                                                className="icon-svg"
-                                                                d="M7,23c0.554,0,1-0.448,1-1c0-3.458,2.987-6.273,6.661-6.273c0.207,0,0.413,0.012,0.617,0.031
+                                                                />
+                                                                <path
+                                                                    className="icon-svg"
+                                                                    d="M7,23c0.554,0,1-0.448,1-1c0-3.458,2.987-6.273,6.661-6.273c0.207,0,0.413,0.012,0.617,0.031
       c0.323,0.023,0.641-0.105,0.852-0.355C17.404,13.875,19.311,13,21.361,13c1.477,0,2.875,0.448,4.046,1.295
       c0.445,0.323,1.071,0.223,1.396-0.224c0.325-0.446,0.223-1.072-0.224-1.396c-0.748-0.541-1.567-0.954-2.433-1.235
       C24.674,10.762,25,9.922,25,9c0-2.206-1.795-4-4-4c-2.206,0-4,1.794-4,4c0,1.018,0.394,1.939,1.023,2.646
       c-1.164,0.465-2.219,1.168-3.086,2.088c-0.091-0.004-0.184-0.006-0.276-0.006C9.885,13.728,6,17.438,6,22C6,22.552,6.448,23,7,23z
        M21,7c1.102,0,2,0.896,2,2c0,1.103-0.898,2-2,2c-1.102,0-2-0.896-2-2C19,7.896,19.898,7,21,7z"
-                                                            />
-                                                            <path
-                                                                className="icon-svg"
-                                                                d="M23.049,18.313c-0.29,0.468-0.145,1.085,0.323,1.377c0.47,0.291,1.087,0.146,1.377-0.323C25.669,17.885,27.258,17,29.001,17
+                                                                />
+                                                                <path
+                                                                    className="icon-svg"
+                                                                    d="M23.049,18.313c-0.29,0.468-0.145,1.085,0.323,1.377c0.47,0.291,1.087,0.146,1.377-0.323C25.669,17.885,27.258,17,29.001,17
       C31.756,17,34,19.243,34,22c0,0.552,0.447,1,1,1c0.552,0,1-0.448,1-1c0-3.86-3.141-7.001-6.999-7.001
       C26.561,14.999,24.337,16.239,23.049,18.313z"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </li>
+                                                                />
+                                                            </svg>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                {/*</div>*/}
+                                            </div>
+                                        </div>
+                                        {/*recipes search widget ends*/}
+                                        
+                                        <div className="widget widget-measurements">
+                                            <h2>Cooking Measurements</h2>
+                                            <ul>
+                                                <li>1 cup = 250 ml = 16 Tablespoons</li>
+                                                <li>1/2 cup = 125 ml = 8 Tablespoons</li>
+                                                <li>1/3 cup = 83 ml = 5.3 Tablespoons</li>
+                                                <li>1/4 cup = 62 ml = 4 Tablespoons</li>
+                                                <li>1 Pinch = 1/8 Teaspoon</li>
                                             </ul>
-                                            {/*</div>*/}
                                         </div>
                                     </div>
-                                    {/*recipes search widget ends*/}
-                                    {/*popular recipes widget*/}
-                                    <div className="widget latest-news-widget">
-                                        <h2>popular recipes</h2>
-                                        <ul>
-                                            <li>
-                                                <div className="thumb">
-                                                    <a href="/">
-                                                        <img
-                                                            src="images/temp-images/widget-thumbnail.jpg"
-                                                            alt="thumbnail"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="detail">
-                                                    <a href="/">Pimento Cheese Potato Skins</a>
-                                                    <span className="post-date">March 21,2015</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="thumb">
-                                                    <a href="/">
-                                                        <img
-                                                            src="images/temp-images/widget-thumbnail.jpg"
-                                                            alt="thumbnail"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="detail">
-                                                    <a href="/">Pimento Cheese Potato Skins</a>
-                                                    <span className="post-date">March 21,2015</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="thumb">
-                                                    <a href="/">
-                                                        <img
-                                                            src="images/temp-images/widget-thumbnail.jpg"
-                                                            alt="thumbnail"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="detail">
-                                                    <a href="/">Pimento Cheese Potato Skins</a>
-                                                    <span className="post-date">March 21,2015</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="thumb">
-                                                    <a href="/">
-                                                        <img
-                                                            src="images/temp-images/widget-thumbnail.jpg"
-                                                            alt="thumbnail"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="detail">
-                                                    <a href="/">Pimento Cheese Potato Skins</a>
-                                                    <span className="post-date">March 21,2015</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {/*popular recipes widget ends*/}
-                                    <div className="widget widget-measurements">
-                                        <h2>Cooking Measurements</h2>
-                                        <ul>
-                                            <li>1 cup = 250 ml = 16 Tablespoons</li>
-                                            <li>1/2 cup = 125 ml = 8 Tablespoons</li>
-                                            <li>1/3 cup = 83 ml = 5.3 Tablespoons</li>
-                                            <li>1/4 cup = 62 ml = 4 Tablespoons</li>
-                                            <li>1 Pinch = 1/8 Teaspoon</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </aside>
+                                </aside>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
-    );
+            </>
+            );
 }
 
-export default RecipeDetails;
+            export default RecipeDetails;

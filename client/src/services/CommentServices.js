@@ -40,3 +40,39 @@ export async function DeleteComment({...comment},postId){
     document.getElementById(comment.id).style.display = "none";
 
 }
+
+export async function AddCommentToRecipe(name, email, message, recipeId, userPhotoURL, userId){
+
+    let date = new Date().toLocaleDateString("en-GB");
+    const id = uuidv4();
+    
+    const recipeRef = doc(db,"recipes", recipeId)
+    
+    let comment = {
+        name,
+        email,
+        message,
+        id,
+        date,
+        userPhotoURL,
+        userId
+    }
+
+    await updateDoc(recipeRef,{
+        comments: arrayUnion(comment),
+    });
+
+    return comment;
+}
+
+export async function DeleteRecipeComment({...comment},recipeId){
+
+    const recipeRef = doc(db,"recipes", recipeId);
+
+    await updateDoc(recipeRef,{
+        comments: arrayRemove(comment)
+    });
+
+    document.getElementById(comment.id).style.display = "none";
+
+}
