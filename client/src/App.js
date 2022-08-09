@@ -27,6 +27,7 @@ import BlogPost from './components/BlogPost/BlogPost';
 import Header2 from './components/Header/Header2';
 import BlogPostEdit from './components/BlogPostEdit/BlogPostEdit';
 import AdminPanel from './components/AdminPanel/AdminPanel';
+import RecipeEdit from './components/RecipeEdit/RecipeEdit';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
 				<Route path="/recipe-listing" element={<RecipeListGrid />} />
 				<Route path="/recipe-listing-grid" element={<RecipeList />} />
 				<Route path="/recipe-detail/:recipeId" element={<RecipeDetails />} />
+				<Route path="/recipe-edit/:recipeId" element={<RecipeEdit />} />
 
 				<Route path="/blog" element={<Blog/>} />
 				<Route path="/submit-to-blog" element={<SubmitToBlog/>}/>

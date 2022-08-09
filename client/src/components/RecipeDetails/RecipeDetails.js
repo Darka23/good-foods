@@ -1,11 +1,11 @@
-import { useParams } from 'react-router-dom';
-import { GetAllRecipes } from '../../services/RecipeServices';
-import Header2 from '../Header/Header2'
+import { Link, useParams } from 'react-router-dom';
+import { GetAllRecipes, DeleteRecipe } from '../../services/RecipeServices';
 import RatingIcons from '../RatingIcons/RatingIcons';
 import React, { useState, useEffect } from 'react';
 import Preloader from '../Preloader';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
+
 
 
 const RecipeDetails = () => {
@@ -79,6 +79,22 @@ const RecipeDetails = () => {
                                             </div>
                                         </div>
 
+                                        {currentUserIsAuthor
+                                            ?
+                                            <>
+                                                <Link 
+                                                    to="/recipe-listing" 
+                                                    className="default-btn mid-button theme-tag-color"
+                                                    onClick={()=>DeleteRecipe(recipe.id)}>Delete Recipe
+                                                </Link>
+                                                <Link
+                                                    to={`/recipe-edit/${recipe.id}`}
+                                                    className="default-btn mid-button light-color">Edit Recipe
+                                                </Link>
+                                            </>
+                                            :<></>
+                                        }
+
                                     </div>
                                     <div className="about-chef">
                                         <h3 className="lined">Author</h3>
@@ -101,7 +117,7 @@ const RecipeDetails = () => {
                                     </div>
 
                                     <div className="recipe-comments">
-                                        <h3 className="lined">Comments (2)</h3>
+                                        <h3 className="lined">Comments {recipe?.comments?.length}</h3>
                                         <ul>
                                             <li>
                                                 <div className="avatar">

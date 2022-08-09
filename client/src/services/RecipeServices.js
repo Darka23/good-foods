@@ -39,19 +39,38 @@ export function CreateRecipe(
         userDisplayName,
         userPhotoUrl,
         date,
-        comments:[],
+        comments: [],
     })
 }
 
-export function GetAllRecipes(){
+export function GetAllRecipes() {
 
     return getDocs(recipeRef)
-		.then((snapshot) => {
-			let recipes = [];
-			snapshot.docs.forEach((doc) => {
-				recipes.push({ ...doc.data(), id: doc.id })
-			})
-			return recipes;
-		})
+        .then((snapshot) => {
+            let recipes = [];
+            snapshot.docs.forEach((doc) => {
+                recipes.push({ ...doc.data(), id: doc.id })
+            })
+            return recipes;
+        })
 }
 
+export function DeleteRecipe(recipeId) {
+    deleteDoc(doc(db, "recipes", recipeId));
+}
+
+export function EditRecipe(recipeId, newTitle, newDescription, newContents, newPreparation, newImageUrl, newPreparationTime, newCookTime, newDishType) {
+
+    const recipeRef = doc(db, "recipes", recipeId);
+
+    updateDoc(recipeRef, {
+        title: newTitle,
+        description: newDescription,
+        imageUrl: newImageUrl,
+        contents: newContents,
+        preparation: newPreparation,
+        preparationTime: newPreparationTime,
+        cookTime: newCookTime,
+        dishType: newDishType
+    });
+}
