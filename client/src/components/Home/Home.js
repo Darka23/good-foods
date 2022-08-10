@@ -10,8 +10,8 @@ const Home = () => {
         <>
             {/* <MainSlider/> */}
             <SearchBar />
-            <HotRecipes />
             <Post />
+            <HotRecipes />
             <RecipeSubmitBanner />
         </>
     );

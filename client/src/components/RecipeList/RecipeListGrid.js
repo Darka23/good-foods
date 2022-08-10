@@ -11,7 +11,7 @@ import DishTypeSideNav from "../DishTypeSideNav/DishTypeSideNav";
 const RecipeListGrid = () => {
 
 	const [searchParams, setSearchParams] = useSearchParams();
-	
+
 	let dishType = searchParams.get("dishType");
 
 	const [recipes, setRecipes] = useState([]);
@@ -20,17 +20,15 @@ const RecipeListGrid = () => {
 	const [user] = useAuthState(auth);
 
 	useEffect(() => {
-		setTimeout(() => {
-			GetAllRecipes()
-				.then((data) => {
-					if(dishType){
-						setRecipes(data.filter(x=>x.dishType==dishType));
-					} else{
-						setRecipes(data);
-					}					
-					setIsLoading(false);
-				})
-		}, 250)
+		GetAllRecipes()
+			.then((data) => {
+				if (dishType) {
+					setRecipes(data.filter(x => x.dishType == dishType));
+				} else {
+					setRecipes(data);
+				}
+				setIsLoading(false);
+			})
 
 	}, [recipes]);
 
@@ -78,7 +76,7 @@ const RecipeListGrid = () => {
 								</div>
 							</div>
 						</div>
-						<DishTypeSideNav/>
+						<DishTypeSideNav />
 					</div>
 				</div>
 			</div>

@@ -5,22 +5,22 @@ import LoginRegister from "../AuthButtons/LoginRegister";
 import LogOut from "../AuthButtons/LogOut"
 import { useEffect, useState } from "react";
 import Preloader from "../Preloader";
+import { GetUserById } from "../../services/UserServices";
 
 const Header2 = () => {
 
-	const[isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(true);
+	const [admin, setAdmin] = useState({});
 	const [user] = useAuthState(auth);
 
-	
-	useEffect(()=>{
-		setTimeout(()=>{
-			setIsLoading(false);
-		},750)
-	},[]);
-	
+	useEffect(() => { //ako bugne
+		setIsLoading(false);
+		GetUserById()
+			.then(data => setAdmin(data[0]));
+	}, []);
 
-	if(isLoading){
-		return <Preloader/>
+	if (isLoading) {
+		return <Preloader />
 	}
 
 	return (
@@ -98,7 +98,13 @@ const Header2 = () => {
 										<div className="wrapper-links">
 
 											{!user ? <LoginRegister /> : <LogOut />}
-
+											{admin?.uid == user?.uid
+												?
+												<span className="sign-in-buttons">
+													<Link to="/admin-panel">AdminPanel</Link>
+												</span>
+												: <></>
+											}
 										</div>
 										<nav className="nav-collapse">
 											<ul className="main-menu right">

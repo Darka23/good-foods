@@ -79,6 +79,7 @@ const registerWithEmailAndPassword = async (name, email, password,photoUrl) => {
 			name,
 			authProvider: "local",
 			email,
+			admin:false
 		});
 	} catch (err) {
 		console.error(err);
