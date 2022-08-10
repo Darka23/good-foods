@@ -3,14 +3,33 @@ import GridRecipe from "../Recipe/GridRecipe";
 import { auth, useAuth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
-import RecipeListGrid from "../RecipeList/RecipeListGrid";
 import Preloader from "../Preloader";
 import { Navigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { GetAllRecipes } from "../../services/RecipeServices";
 
 
 const Profile = () => {
 
+    const [recipes, setRecipes] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
     const [user] = useAuthState(auth);	
+
+    useEffect(() => {
+        setTimeout(() => {
+            GetAllRecipes()
+                .then((data) => {
+                    setRecipes(data);
+                    setIsLoading(false);
+                })
+        }, 750)
+
+    }, []);
+
+    if (isLoading) {
+        return <Preloader />
+    }
+
 
     if(!user){
         return <Navigate to="/login" replace/>
@@ -56,7 +75,16 @@ const Profile = () => {
                         <ul className="chef-team">
                             
 
-                            <GridRecipe/>
+                            {recipes.length
+                                ?
+                                recipes
+                                    .filter(recipe=>recipe.userId==user.uid)
+                                    .map((recipe)=>{
+                                        return <GridRecipe key={recipe.id} props={recipe}/>
+                                })
+                                :
+                                <h1>You haven't posted any recipes yet</h1>
+                            }           
                             
                         </ul>
                     </div>

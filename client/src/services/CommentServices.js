@@ -36,7 +36,6 @@ export async function DeleteComment({...comment},postId){
         comments: arrayRemove(comment)
     });
 
-    console.log(comment.id);
     document.getElementById(comment.id).style.display = "none";
 
 }

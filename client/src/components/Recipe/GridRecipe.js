@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { logInWithEmailAndPassword } from "../../firebase";
 
 const GridRecipe = (props) => {
 

@@ -1438,8 +1438,12 @@ a.mean-expand {
 .wrapper-search-carousel {
   padding-left: 1px;
 }
+
+#search-carousel{
+  display: flex;
+  justify-content: space-around;
+}
 .search-carousel .slide {
-  border-right: 1px solid #67b238;
   display: inline;
 }
 
@@ -1454,7 +1458,6 @@ a.mean-expand {
   color: #33571c;
   text-transform: capitalize;
   transition: 0.2s all ease-in-out;
-  padding-left: 30px;
 }
 .search-carousel a:hover {
   color: #ffffff;
@@ -4561,6 +4564,11 @@ div.widget-measurements .default-btn {
   display: flex;
   justify-content: space-between;
 }
+.slider-recipe-detail img {
+  width: 80%;
+}
+
+
 .slider-recipe-detail .wrapper-slider-detail {
   width: 80%;
   position: relative;
@@ -6645,4 +6653,9 @@ div.widget-measurements .default-btn {
   position: relative;
   bottom:20px;
   color: red;
+}
+
+.listing .image img{
+  width: 300px;
+  height: 200px;
 }

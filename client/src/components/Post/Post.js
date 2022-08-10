@@ -34,7 +34,7 @@ const Post = () => {
 					</div>
 					<div className="image-side animated wow zoomIn">
 						<div className="good-food-image">
-							<img src="images/temp-images/good-food.jpg" alt="image" />
+							<img src="images/people_eating_.original.jpg" alt="image" />
 						</div>
 					</div>
 				</div>

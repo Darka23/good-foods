@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, } from "../../firebase";
 import { GetBlogPosts, CreateBlogPost, EditBlogPost } from "../../services/BlogServices";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import Preloader from "../Preloader";
+
 
 const BlogPostEdit = () => {
 
@@ -15,6 +16,7 @@ const BlogPostEdit = () => {
     const [imageUrl, setImageUrl] = useState("");
     const [previousBlogPost, setPreviousBlogPost] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [user] = useAuthState(auth);
 
     let date = new Date().toLocaleDateString("en-GB");
 
@@ -27,6 +29,9 @@ const BlogPostEdit = () => {
             })
     }, [])
 
+    if (!user) {
+		return <Navigate to="/login" replace />
+	}
     
     if(isLoading){
         return <Preloader/>

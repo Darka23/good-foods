@@ -1,38 +1,16 @@
+import { Link } from "react-router-dom";
+
 const SearchBar = () => {
     return (
-
 
         <div className="wrapper-search-bar">
             <div className="container">
                 <div className="search-bar">
                     <div className="row">
-                        <div className="col-lg-4 col-md-5">
-                            <div className="search-box">
-                                <form className="search-box-home">
-                                    <div className="slider-search-left">
-                                        <span>Search</span>
-                                        <label htmlFor="search-slider">
-                                            <input
-                                                type="search"
-                                                id="search-slider"
-                                                placeholder="keyword"
-                                            />
-                                        </label>
-                                        <button>
-                                            <i className="fa fa-search" />
-                                        </button>
-                                    </div>
-                                </form>
-                                <div className="search-option">
-                                    <span>or</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-8 col-md-7">
                             <div className="wrapper-search-carousel">
                                 <div className="search-carousel" id="search-carousel">
                                     <div className="slide">
-                                        <a href="/">
+                                        <Link to="/recipe-listing?dishType=Breakfast">
                                             <span>
                                                 <svg
                                                     version="1.1"
@@ -64,10 +42,10 @@ const SearchBar = () => {
                                                 </svg>
                                             </span>
                                             breakfast
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="slide">
-                                        <a href="/">
+                                        <Link to="/recipe-listing?dishType=Starter">
                                             <span>
                                                 <svg
                                                     version="1.1"
@@ -102,10 +80,10 @@ const SearchBar = () => {
                                                 </svg>
                                             </span>
                                             starter
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="slide">
-                                        <a href="/">
+                                        <Link to="/recipe-listing?dishType=Lunch">
                                             <span>
                                                 <svg
                                                     version="1.1"
@@ -149,10 +127,10 @@ const SearchBar = () => {
                                                 </svg>
                                             </span>
                                             lunch
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="slide">
-                                        <a href="/">
+                                        <Link to="/recipe-listing?dishType=Dessert">
                                             <span>
                                                 <svg
                                                     version="1.1"
@@ -192,10 +170,10 @@ const SearchBar = () => {
                                                 </svg>
                                             </span>
                                             dessert
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="slide">
-                                        <a href="/">
+                                        <Link to="/recipe-listing?dishType=Dinner">
                                             <span>
                                                 <svg
                                                     version="1.1"
@@ -232,11 +210,10 @@ const SearchBar = () => {
                                                 </svg>
                                             </span>
                                             dinner
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div>  
                     </div>
                 </div>
             </div>
