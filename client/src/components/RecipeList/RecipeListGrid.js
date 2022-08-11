@@ -30,7 +30,7 @@ const RecipeListGrid = () => {
 				setIsLoading(false);
 			})
 
-	}, [recipes]);
+	}, [searchParams]);
 
 	if (isLoading) {
 		return <Preloader />
@@ -53,14 +53,6 @@ const RecipeListGrid = () => {
 					<div className="row">
 						<div className="col-md-8 col-lg-9">
 							<div className="recipe-set">
-								<div className="listing-buttons">
-									<span className="grid current">
-										<i className="fa fa-th-large" />
-									</span>
-									<span className="list ">
-										<Link to="recipe-listing-grid.html"><i className="fa fa-bars" /></Link>
-									</span>
-								</div>
 								<h2>Recent Recipes</h2>
 								<div className="recipe-listing listing-grid">
 

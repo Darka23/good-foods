@@ -6659,3 +6659,9 @@ div.widget-measurements .default-btn {
   width: 300px;
   height: 200px;
 }
+
+.errorHeading{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 240px;
+}

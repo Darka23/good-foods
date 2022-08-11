@@ -5,7 +5,7 @@ import LoginRegister from "../AuthButtons/LoginRegister";
 import LogOut from "../AuthButtons/LogOut"
 import { useEffect, useState } from "react";
 import Preloader from "../Preloader";
-import { GetUserById } from "../../services/UserServices";
+import { GetAdminUser } from "../../services/UserServices";
 
 const Header2 = () => {
 
@@ -13,11 +13,14 @@ const Header2 = () => {
 	const [admin, setAdmin] = useState({});
 	const [user] = useAuthState(auth);
 
-	useEffect(() => { //ako bugne
-		setIsLoading(false);
-		GetUserById()
-			.then(data => setAdmin(data[0]));
-	}, []);
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false);
+			GetAdminUser()
+				.then(data => setAdmin(data[0]));
+		}, 750);
+	}, [])
+
 
 	if (isLoading) {
 		return <Preloader />

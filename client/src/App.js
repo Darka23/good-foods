@@ -28,6 +28,8 @@ import Header2 from './components/Header/Header2';
 import BlogPostEdit from './components/BlogPostEdit/BlogPostEdit';
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import RecipeEdit from './components/RecipeEdit/RecipeEdit';
+import NotFound from './components/NotFound/NotFound';
+import AllUsers from './components/AllUsers/AllUsers';
 
 
 function App() {
@@ -58,6 +60,9 @@ function App() {
 				<Route path="/contacts" element={<Contacts />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/admin-panel" element={<AdminPanel/>}/>
+				<Route path="/all-users" element={<AllUsers/>}/>
+				<Route path="/not-found" element={<NotFound/>}/>
+				<Route path="*" element={<NotFound/>}/>
 			</Routes>
 		<Footer />
 		</>
