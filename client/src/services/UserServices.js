@@ -34,5 +34,5 @@ export function GetAllUsers() {
 }
 
 export function DeleteUser(userId) {
-    deleteDoc(doc(db, "users", userId));
+    return deleteDoc(doc(db, "users", userId));
 }

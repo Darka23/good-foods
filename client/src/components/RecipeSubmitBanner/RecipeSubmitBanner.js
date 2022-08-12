@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const RecipeSubmitBanner = () => {
 	return (
 		<div className="recipe-submit-banner">
@@ -11,14 +13,14 @@ const RecipeSubmitBanner = () => {
 						</div>
 						<div className="col-md-3">
 							<div className="recipe-button">
-								<a className="submit-recipe" href="/submit-recipe">
+								<Link className="submit-recipe" to="/submit-recipe">
 									submit recipe
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>
 				</div>
-<br/>
+				<br />
 			</div>
 		</div>
 	);

@@ -10,70 +10,77 @@ import { auth } from '../../firebase';
 const AllUsers = () => {
 
 	const [isLoading, setIsLoading] = useState(true);
-    const [allUsers, setAllUsers] = useState([]);
-    const [user] = useAuthState(auth);
-    const [admin, setAdmin] = useState({});
+	const [allUsers, setAllUsers] = useState([]);
+	const [user] = useAuthState(auth);
+	const [admin, setAdmin] = useState({});
 
-    useEffect(()=>{
-        GetAllUsers()
-        .then(data=>setAllUsers(data))
-        GetAdminUser()
-        .then((data)=>{
-            setAdmin(data);
-            setIsLoading(false);
-        })
-    },[])
 
-    if(isLoading){
-        return <Preloader/>
-    }
 
-    if(admin[0]?.uid != user?.uid){
-        return <Navigate to="/not-found"/>
-    }
+	useEffect(() => {
+		GetAllUsers()
+			.then(data => setAllUsers(data));
 
-    return (
-        <body className={styles["body"]}>
+		GetAdminUser()
+			.then((data) => {
+				setAdmin(data);
+				setIsLoading(false);
+			})
+	}, [])
 
-            <main className={styles["main"]}>
-                {/* Section component  */}
-                <section className={styles["card users-container"]}>
+	function deleteUserHandler(userId) {
+		setAllUsers((state)=>state.filter((x)=>x.id!=userId))
+	}
 
-                    <div className={styles["table-wrapper"]}>
+	if (isLoading) {
+		return <Preloader />
+	}
 
-                        <table className={styles["table"]}>
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Email
-                                    </th>
-                                    <th>
-                                        Id
-                                    </th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* Table row component */}
-                                {allUsers
-                                    ?
-                                    allUsers.map(user=>{
-                                        return <SingleUser key={user.id} props={user}/>
-                                    })
-                                    :
-                                    <h1>No users...</h1>
-                                }
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                {/* User details component  */}
-                {/* <div class="overlay">
+	if (admin[0]?.uid != user?.uid) {
+		return <Navigate to="/not-found" />
+	}
+
+	return (
+		<body className={styles["body"]}>
+
+			<main className={styles["main"]}>
+				{/* Section component  */}
+				<section className={styles["card users-container"]}>
+
+					<div className={styles["table-wrapper"]}>
+
+						<table className={styles["table"]}>
+							<thead>
+								<tr>
+									<th>Image</th>
+									<th>
+										Name
+									</th>
+									<th>
+										Email
+									</th>
+									<th>
+										Id
+									</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								{/* Table row component */}
+								{allUsers
+									?
+									allUsers.map(user => {
+										return <SingleUser key={user.id} props={user} deleteHandler={deleteUserHandler}/>
+									})
+									:
+									<h1>No users...</h1>
+								}
+
+							</tbody>
+						</table>
+					</div>
+				</section>
+				{/* User details component  */}
+				{/* <div class="overlay">
 <div class="backdrop"></div>
 <div class="modal">
   <div class="detail-container">
@@ -113,8 +120,8 @@ const AllUsers = () => {
   </div>
 </div>
     </div> */}
-                {/* Create/Edit Form component  */}
-                {/* <div class="overlay">
+				{/* Create/Edit Form component  */}
+				{/* <div class="overlay">
 <div class="backdrop"></div>
 <div class="modal">
   <div class="user-container">
@@ -236,8 +243,8 @@ const AllUsers = () => {
   </div>
 </div>
     </div> */}
-                {/* Delete user component  */}
-                {/* <div class="overlay">
+				{/* Delete user component  */}
+				{/* <div class="overlay">
 <div class="backdrop"></div>
 <div class="modal">
   <div class="confirm-container">
@@ -263,10 +270,10 @@ const AllUsers = () => {
   </div>
 </div>
     </div> */}
-            </main>
-        </body>
+			</main>
+		</body>
 
-    );
+	);
 }
 
 export default AllUsers;

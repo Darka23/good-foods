@@ -4,6 +4,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import RecipeSubmitBanner from '../../components/RecipeSubmitBanner/RecipeSubmitBanner';
 import Post from '../../components/Post/Post';
 import HomeHeader from '../../components/Header/HomeHeader'
+import HomePageRecipes from '../HomePageRecipes/HomePageRecipes';
 
 const Home = () => {
     return (
@@ -11,7 +12,8 @@ const Home = () => {
             {/* <MainSlider/> */}
             <SearchBar />
             <Post />
-            <HotRecipes />
+            {/* <HotRecipes /> */}
+            <HomePageRecipes/>
             <RecipeSubmitBanner />
         </>
     );

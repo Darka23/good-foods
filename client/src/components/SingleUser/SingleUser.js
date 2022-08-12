@@ -5,6 +5,11 @@ import styles from '../AllUsers/admin.module.css'
 const SingleUser = (props) => {
 
     let data = props.props;
+    
+    function deleteUserHandler(){
+        DeleteUser(data.id)
+            .then(()=>props.deleteHandler(data.id))
+    }
 
     return (
         <tr>
@@ -20,7 +25,7 @@ const SingleUser = (props) => {
             <td>{data.uid}</td>
             
             <td className={styles["actions"]}>
-                <button onClick={() => DeleteUser(data.id)}><BsTrash className={styles["deleteIcon"]} /></button>
+                <button onClick={deleteUserHandler}><BsTrash className={styles["deleteIcon"]} /></button>
             </td>
         </tr>
     );

@@ -63,7 +63,7 @@ const Header2 = () => {
 													</ul>
 												</li>
 												<li>
-													<Link to="/recipe-listing">Recent Recipes</Link>
+													<Link to="/recipe-listing">Recipes</Link>
 													<ul>
 														<li>
 															<Link to="/recipe-listing">
