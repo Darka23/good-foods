@@ -46,7 +46,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -75,7 +75,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -104,7 +104,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -133,7 +133,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -162,7 +162,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -212,7 +212,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -241,7 +241,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -270,7 +270,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -299,7 +299,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -328,7 +328,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -384,7 +384,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -413,7 +413,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -442,7 +442,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -471,7 +471,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -500,7 +500,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -550,7 +550,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -579,7 +579,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -608,7 +608,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -637,7 +637,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -666,7 +666,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -735,7 +735,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -764,7 +764,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -793,7 +793,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -822,7 +822,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
@@ -851,7 +851,7 @@ const HotRecipes = () => {
                           className="icon-container"
                           width={25}
                           height={19}
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 25 19"
                         >
                           <g>
