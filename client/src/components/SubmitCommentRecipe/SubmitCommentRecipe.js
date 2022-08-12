@@ -16,8 +16,10 @@ const SubmitCommentRecipe = (recipe) => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
-
+    
+    
     function submitCommentHandler() {
+        console.log(user);
         AddCommentToRecipe(name, email, message, recipeId,user.photoURL,user.uid)
             .then((data) => {
                 setName("");

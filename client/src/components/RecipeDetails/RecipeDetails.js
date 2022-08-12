@@ -32,6 +32,7 @@ const RecipeDetails = () => {
         GetAllRecipes()
             .then((data) => {
                 let desiredRecipe = data.find(x => x.id == recipeId)
+                setComments(desiredRecipe.comments)
                 setRecipe(desiredRecipe);
                 setIsLoading(false);
             })
