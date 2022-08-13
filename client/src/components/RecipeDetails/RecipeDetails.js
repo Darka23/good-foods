@@ -138,18 +138,23 @@ const RecipeDetails = () => {
                                                 <h1>No comments...</h1>
                                             }
                                         </ul>
-                                    </div>
 
-                                            <SubmitCommentRecipe recipeId={recipe.id} addCommentHandler={AddComment} />
                                     </div>
+                                    {
+                                        user ?
+                                            <SubmitCommentRecipe recipeId={recipe.id} addCommentHandler={AddComment} />
+                                            : <></>
+                                            }
                                 </div>
+
                             </div>
-                            <DishTypeSideNav/>
                         </div>
+                        <DishTypeSideNav />
                     </div>
                 </div>
-            </>
-            );
+            </div>
+        </>
+    );
 }
 
-            export default RecipeDetails;
+export default RecipeDetails;

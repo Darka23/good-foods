@@ -9,7 +9,10 @@ const RecipeComment = (comment) => {
     let data = comment.comment.comment;
     let recipeId = comment.comment.recipeId
     const [user] = useAuthState(auth);
-    let isAuthor = user.uid == data.userId
+    let isAuthor;
+    if(user){
+        isAuthor = user?.uid == data.userId
+    }
 
     return (
         <li id={data.id}>

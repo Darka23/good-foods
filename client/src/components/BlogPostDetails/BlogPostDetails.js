@@ -128,7 +128,11 @@ const BlogPostDetails = () => {
 
                                             </ul>
                                             <div className="separator-post" />
+                                            {user
+                                            ?
                                             <SubmitComment postId={blogPostId} addCommentHandler={AddComment}/>
+                                            :<></>
+                                            }
                                         </div>
                                     </div>
                                 </div>
